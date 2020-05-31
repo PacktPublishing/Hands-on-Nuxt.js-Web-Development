@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <form action="./server.php" method="post">
+    <input type="checkbox" name="books[]" value="On the Origin of Species"> On the Origin of Species<br>
+    <input type="checkbox" name="books[]" value="A Brief History of Time"> A Brief History of Time<br>
+    <input type="checkbox" name="books[]" value="The Selfish Genet"> The Selfish Gene<br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="app">
+    <form v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <!-- works with new FormData -->
+      <input type="checkbox" name="books[]" value="On the Origin of Species"> On the Origin of Species<br>
+      <input type="checkbox" name="books[]" value="A Brief History of Time"> A Brief History of Time<br>
+      <input type="checkbox" name="books[]" value="The Selfish Genet"> The Selfish Gene<br>
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData unless use name="books[] -->
+      <input type="checkbox" v-model="books" value="On the Origin of Species" name="books[]">On the Origin of Species<br/>
+      <input type="checkbox" v-model="books" value="A Brief History of Time" name="books[]">A Brief History of Time<br/>
+      <input type="checkbox" v-model="books" value="The Selfish Gene" name="books[]">The Selfish Gene<br/>
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData -->
+      <input
+        type="checkbox"
+        name="books"
+        value="On the Origin of Species"
+        v-bind:checked="false"
+        v-on:change="
+          $event.target.checked == true ?
+          books.push($event.target.value) :
+          books.splice(books.indexOf($event.target.value), 1)
+        "
+      >On the Origin of Species<br>
+
+      <input
+        type="checkbox"
+        name="books"
+        value="A Brief History of Time"
+        v-bind:checked="false"
+        v-on:change="
+          $event.target.checked == true ?
+          books.push($event.target.value) :
+          books.splice(books.indexOf($event.target.value), 1)
+        "
+      >A Brief History of Time<br>
+
+      <input
+        type="checkbox"
+        name="books"
+        value="The Selfish Gene"
+        v-bind:checked="false"
+        v-on:change="
+          $event.target.checked == true ?
+          books.push($event.target.value) :
+          books.splice(books.indexOf($event.target.value), 1)
+        "
+      >The Selfish Gene<br>
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData -->
+      <custom-checkbox v-model="books" value="On the Origin of Species" name="books"></custom-checkbox>On the Origin of Species<br/>
+      <custom-checkbox v-model="books" value="A Brief History of Time" name="books"></custom-checkbox>A Brief History of Time<br/>
+      <custom-checkbox v-model="books" value="The Selfish Gene" name="books"></custom-checkbox>The Selfish Gene<br/>
+
+      {{ books }}
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-checkbox', {
+      props: {
+        value: String,
+        books: Array,
+        // checked: String,
+      },
+      model: {
+        prop: 'books', // <-- custom
+        // prop: 'checked', // <-- default
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput (event) {
+          let isChecked = event.target.checked
+          let books = [...this.books]
+
+          if (isChecked) {
+            books.push(this.value)
+          } else {
+            books.splice(books.indexOf(this.value), 1)
+          }
+
+          this.$emit('change', books)
+        }
+      },
+      template: `
+        <input
+          type="checkbox"
+          v-bind:value="value"
+          v-bind:checked="false"
+          v-on:change="updateInput"
+        >
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        books: []
+      },
+      methods: {
+        submitForm ($event) {
+          // Use FormData()
+          // let form = $event.target
+          // let formData = new FormData(form)
+          // const formData = new FormData()
+          // for (var key in this.books) {
+          //   formData.append(key, this.books[key])
+          // }
+          // Or use URLSearchParams()
+          // const params = new URLSearchParams()
+          // for (var key in this.books) {
+          //   params.append(key, this.books[key])
+          // }
+
+          // Best with qs - https://github.com/ljharb/qs
+          let payload = {
+            books: this.books
+          }
+          var str = Qs.stringify(payload)
+
+          // does not work with custom input components
+          let form = $event.target
+          let formData = new FormData(form)
+
+          axios.post('./server.php', formData)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

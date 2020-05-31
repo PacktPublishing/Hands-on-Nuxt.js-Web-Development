@@ -1,0 +1,14 @@
+{
+  "name": "nightwatch-basic",
+  "version": "1.0.0",
+  "description": "Nightwatch basic tests",
+  "author": "Lau Tiam Kok",
+  "private": true,
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "devDependencies": {
+    "geckodriver": "^1.19.1",
+    "nightwatch": "^1.1.13"
+  }
+}

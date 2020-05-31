@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-app",
+  "version": "1.0.0",
+  "description": "My fantabulous Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "cross-env": "^5.2.0",
+    "foundation-icon-fonts": "^0.1.1",
+    "foundation-sites": "^6.5.3",
+    "jquery": "^3.4.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
+    "motion-ui": "^2.0.3",
+    "nuxt": "^2.11.0",
+    "swiper": "^4.5.0",
+    "what-input": "^5.2.3"
+  },
+  "devDependencies": {
+    "less": "^3.10.1",
+    "less-loader": "^5.0.0",
+    "node-sass": "^4.13.1",
+    "nodemon": "^1.19.1",
+    "sass-loader": "^7.2.0"
+  }
+}

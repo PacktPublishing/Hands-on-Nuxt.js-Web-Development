@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Socket.io Client</title>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+
+<script>
+  $(function () {
+    var socket = io('http://localhost:4000/')
+
+    // Listen on the server.
+    socket.on('emit.onserver', function (message) {
+      console.log('Message from the server: ' + message)
+    })
+
+    $('.button-sent').click(function(e){
+      e.preventDefault()
+
+      // Emit to the server.
+      var message = 'Hi server, how are you holding up?'
+      socket.emit('emit.onclient', message)
+      console.log('Message sent to the server.')
+
+      return false
+    });
+  })
+</script>
+
+</head>
+<body>
+<button class="button-sent">Send</button>
+</body>
+</html>

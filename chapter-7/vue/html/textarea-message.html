@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <textarea
+      v-bind:value="message"
+      v-on:input="message = $event.target.value"
+    ></textarea>
+
+    {{ message }}
+
+    <br/>
+
+    <custom-textarea
+      v-model="message"
+    ></custom-textarea>
+  </div>
+
+
+  <script type="text/javascript">
+    Vue.component('custom-textarea', {
+      props: {
+        value: null
+      },
+      model: {
+        prop: 'value', // <-- default
+        event: 'input' // <-- default
+      },
+      template: `
+        <textarea
+          v-on:input="$emit('input', $event.target.value)"
+        ></textarea>
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: null
+      }
+    })
+  </script>
+
+</body>
+</html>

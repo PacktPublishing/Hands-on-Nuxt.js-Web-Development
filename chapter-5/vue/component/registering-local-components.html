@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <ol>
+      <user-item
+        v-for="user in users"
+        v-bind:user="user"
+        v-bind:key="user.id"
+      ></user-item>
+    </ol>
+  </div>
+
+  <script type="text/javascript">
+    const UserItem = {
+      props: ['user'],
+      template: '<li>{{ user.name }}</li>'
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        users: [
+          { id: 0, name: 'John Doe' },
+          { id: 1, name: 'Jane Doe' },
+          { id: 2, name: 'Mary Moe' }
+        ]
+      },
+      components: {
+        'user-item': UserItem
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ES6 Import</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  My name is <input v-model="name">
+</div>
+
+<script type="text/javascript">
+    const app = new Vue({
+      el:'#app',
+      data:{
+        name:''
+      },
+      mounted() {
+        if(localStorage.name) this.name = localStorage.name;
+      },
+      watch:{
+        name(newName) {
+          localStorage.name = newName;
+        }
+      }
+    })
+</script>
+
+</body>
+</html>

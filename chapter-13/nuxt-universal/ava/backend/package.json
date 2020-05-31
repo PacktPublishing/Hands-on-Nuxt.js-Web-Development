@@ -1,0 +1,30 @@
+{
+  "name": "koa-auth",
+  "version": "1.0.0",
+  "description": "My legendary Koa.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "backpack",
+    "build": "backpack build",
+    "start": "cross-env NODE_ENV=production node build/main.js"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.4.0",
+    "googleapis": "^40.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-favicon": "^2.0.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.11.0",
+    "koa-static": "^5.0.0",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "backpack-core": "^0.8.4",
+    "prettier": "1.18.2"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="todos">
+    <input
+      v-bind:value="newTodoText"
+      v-on:input="newTodoText = $event.target.value"
+    >
+    <custom-input v-model="newTodoText"></custom-input>
+    <p>{{ newTodoText }}</p>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-input', {
+      // props: ['value'],
+      // Or better:
+      props: {
+        value: null
+      },
+      template: `<input v-on:input="$emit('input', $event.target.value)">`,
+      // Or better:
+      // template: '<input v-bind:value="value" v-on:input="addNewTask">',
+      // methods: {
+      //   addNewTask ($event) {
+      //     this.$emit('input', $event.target.value)
+      //   }
+      // }
+    })
+
+    new Vue({
+      el: '#todos',
+      data: {
+        newTodoText: null
+      }
+    })
+  </script>
+
+</body>
+</html>

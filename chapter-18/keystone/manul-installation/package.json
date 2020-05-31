@@ -1,0 +1,16 @@
+{
+  "name": "minimal-keystone-app",
+  "description": "A minimal Keystone project.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "keystone"
+  },
+  "dependencies": {
+    "@keystonejs/adapter-mongoose": "^8.0.2",
+    "@keystonejs/app-admin-ui": "^5.12.0",
+    "@keystonejs/app-graphql": "^5.1.6",
+    "@keystonejs/fields": "^9.0.5",
+    "@keystonejs/keystone": "^8.1.4"
+  },
+  "devDependencies": {}
+}

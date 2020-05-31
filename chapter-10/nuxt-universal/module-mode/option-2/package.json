@@ -1,0 +1,17 @@
+{
+  "name": "vuex-store",
+  "version": "1.0.0",
+  "description": "My sweet Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.10.2"
+  },
+  "devDependencies": {}
+}

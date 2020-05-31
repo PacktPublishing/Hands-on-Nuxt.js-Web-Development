@@ -1,0 +1,10 @@
+// https://github.com/webpack-contrib/sass-loader/issues/845
+// @import 'motion-ui';
+@import '../../node_modules/motion-ui/src/motion-ui';
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+.welcome {
+  @include mui-animation(fade);
+  animation-duration: 1s;
+}

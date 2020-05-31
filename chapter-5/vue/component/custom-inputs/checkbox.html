@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="subscription">
+    <form v-on:submit.prevent="subscribeNewsletter">
+      <label for="newsletter">Subscribe to newsletter</label>
+      <custom-checkbox v-model="checkedSubscribe"></custom-checkbox>
+      <button>Add</button>
+    </form>
+    {{ checkedSubscribe }}
+  </div>
+
+  <script type="text/javascript">
+    // https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+    // https://vuejs.org/v2/guide/components-custom-events.html#Customizing-Component-v-model
+    Vue.component('custom-checkbox', {
+      props: {
+        checked: Boolean
+      },
+      model: {
+        prop: 'checked',
+        event: 'change'
+      },
+      template: `
+        <input
+          type="checkbox"
+          v-bind:checked="checked"
+          v-on:change="changed"
+          name="subscribe"
+          value="newsletter"
+        >
+      `,
+      methods: {
+        changed ($event) {
+          this.$emit('change', $event.target.checked)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#subscription',
+      data: {
+        checkedSubscribe: true
+      },
+      methods: {
+        subscribeNewsletter ($event) {
+          // var formData = $($event.target).serialize()
+          var formData = JSON.stringify($($event.target).serializeArray())
+          // Send the data [{"name":"subscribe","value":"newsletter"}] to the server
+          // instead of [{"name":"subscribe","value":"on"}].
+          console.log(formData)
+        }
+      },
+      watch: {
+        checkedSubscribe (boolean) {
+          // Use the boolean for something else...
+          console.log(boolean)
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

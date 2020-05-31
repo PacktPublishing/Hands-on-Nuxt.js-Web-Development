@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuex app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+  <script src="https://unpkg.com/vuex@2.0.0"></script>
+</head>
+<body>
+
+  <div id="app"></div>
+
+  <script type="text/javascript">
+    new Vue({
+      // state
+      data () {
+        return { message: '' }
+      },
+
+      // view
+      template: '\
+        <div>\
+          <p>{{ message }}</p>\
+          <button v-on:click="greet">Greet</button>\
+        </div>\
+      ',
+
+      // actions
+      methods: {
+        greet () {
+          this.message = 'Hello World'
+        }
+      }
+    }).$mount('#app')
+
+    // const app = new Vue({
+    //   //...
+    // })
+    // app.greet()
+  </script>
+
+</body>
+</html>

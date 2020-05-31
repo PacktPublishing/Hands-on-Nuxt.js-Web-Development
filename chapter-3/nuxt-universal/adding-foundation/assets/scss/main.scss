@@ -1,0 +1,8 @@
+@import 'motion-ui/src/motion-ui';
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+.welcome {
+  @include mui-animation(fade);
+  animation-duration: 2s;
+}

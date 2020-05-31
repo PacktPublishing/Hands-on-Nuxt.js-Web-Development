@@ -1,0 +1,20 @@
+{
+  "name": "routing",
+  "version": "1.0.0",
+  "description": "My super-excellent Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "nuxt": "^2.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

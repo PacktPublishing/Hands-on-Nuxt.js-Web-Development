@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Local Middlewares</title>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+  <ul>
+    <li><router-link to="/">Home</router-link></li>
+    <li><router-link to="/page1">Page 1</router-link></li>
+    <li><router-link to="/page1/foo">Page 1: foo</router-link></li>
+    <li><router-link to="/page1/bar">Page 1: bar</router-link></li>
+    <li><router-link to="/page2">Page 2</router-link></li>
+  </ul>
+  <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+    const Page1 = {
+      template: '<div>Page 1 {{ $route.params.slug }}</div>',
+      beforeRouteEnter (to, from, next) {
+        console.log('before entering page 1')
+        next(vueComponent => {
+          // console.log(vueComponent)
+          console.log('before entering page 1: ', vueComponent.$route.path)
+        })
+      },
+      beforeRouteUpdate (to, from, next) {
+        // console.log(this)
+        console.log('before updating page 1: ', this.$route.path)
+        next()
+      },
+      beforeRouteLeave (to, from, next) {
+        // console.log(this)
+        console.log('before leaving page 1: ', this.$route.path)
+        next()
+      }
+    }
+    const Page2 = {
+      template: '<div>Page 2</div>',
+      beforeRouteEnter (to, from, next) {
+        console.log('before entering page 2')
+        next(vueComponent => {
+          console.log('before entering page 2: ', vueComponent.$route.path)
+        })
+      },
+      beforeRouteLeave (to, from, next) {
+        // console.log(this)
+        console.log('before leaving page 2: ', this.$route.path)
+        next()
+      }
+    }
+
+    const routes = [
+      {
+        path: '/page1',
+        component: Page1,
+        children: [
+          {
+            path: ':slug',
+            // component: Page1
+          }
+        ]
+      },
+      // {
+      //   path: '/page1/:slug',
+      //   component: Page1
+      // },
+      {
+        path: '/page2',
+        component: Page2
+      }
+    ]
+
+    const router = new VueRouter({
+      routes
+    })
+
+    const app = new Vue({
+      router
+    }).$mount('#app')
+
+</script>
+
+</body>
+</html>

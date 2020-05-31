@@ -1,0 +1,11 @@
+{
+  "name": "express-sample",
+  "version": "1.0.0",
+  "description": "My marvelous express.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}

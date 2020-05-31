@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <select name="favourites[]" multiple id="example">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+  </select>
+
+  <div id="app">
+    <form v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <!-- <select name="favourites[]" multiple>
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+        <option value="Big Bang: The Origin of the Universe">Big Bang: The Origin of the Universe</option>
+      </select> -->
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData -->
+      <!-- <select v-model="favourites" name="favourites" multiple>
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+      </select> -->
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData -->
+      <select
+        v-bind:value="favourites"
+        v-on:change="handleFavourites"
+        name="favourites"
+        multiple
+      >
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+      </select>
+
+      <p>...........</p>
+
+      <!-- does not work with new FormData -->
+      <!-- <custom-select v-model="favourites" name="favourites" multiple></custom-select> <br/> -->
+
+      {{ favourites }}
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    // https://api.jquery.com/selected-selector/
+    $('#example')
+      .change(function() {
+        var str = ''
+        $('select option:selected').each(function() {
+          str += $( this ).text() + ' '
+        })
+        console.log(str)
+      })
+      .trigger('change')
+
+    Vue.component('custom-select', {
+      props: {
+        value: String,
+        // favourites: Array,
+      },
+      model: {
+        // prop: 'value', // <-- default
+        prop: 'favourites', // <-- custom
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput (event) {
+          let favourites = []
+          $('option:selected', event.target).each(function() {
+            favourites.push($(this ).text())
+          })
+          this.$emit('change', favourites)
+        }
+      },
+      template: `
+        <select
+          v-bind:value="value"
+          v-on:change="updateInput"
+        >
+          <option value="On the Origin of Species">On the Origin of Species</option>
+          <option value="A Brief History of Time">A Brief History of Time</option>
+          <option value="The Selfish Gene">The Selfish Gene</option>
+        </select>
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        favourites: []
+      },
+      methods: {
+        handleFavourites ($event) {
+          let favourites = []
+          $('option:selected', $event.target).each(function () {
+            favourites.push($(this ).text())
+          })
+          this.favourites = favourites
+        },
+        submitForm ($event) {
+          // Does not work with v-model.
+          // let form = $event.target
+          // let formData = new FormData(form)
+
+          // Best with qs - https://github.com/ljharb/qs
+          let payload = {
+            favourites: this.favourites
+          }
+          var str = Qs.stringify(payload)
+
+          axios.post('./server.php', str)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

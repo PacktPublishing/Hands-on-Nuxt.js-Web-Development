@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <form action="./server.php" method="post">
+    <input type="checkbox" name="books[]" value="On the Origin of Species"> On the Origin of Species<br>
+    <input type="checkbox" name="books[]" value="A Brief History of Time"> A Brief History of Time<br>
+    <input type="checkbox" name="books[]" value="The Selfish Genet"> The Selfish Gene<br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="app">
+    <form v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <!-- <input type="checkbox" name="subscribe" value="yes"> Yes<br> -->
+
+      <p>...........</p>
+
+      <!-- <input type="checkbox" v-model="subscribe" value="yes" name="subscribe"> Yes<br/> -->
+
+      <p>...........</p>
+
+      <!-- work with new FormData -->
+      <input
+        type="checkbox"
+        name="subscribe"
+        value="yes"
+        v-bind:checked="false"
+        v-on:change="subscribe = $event.target.checked"
+      >Yes<br>
+
+      <p>...........</p>
+
+      <!-- <custom-checkbox v-model="subscribe" value="yes" name="subscribe"></custom-checkbox>Yes<br/> -->
+
+      {{ subscribe }}
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-checkbox', {
+      props: {
+        checked: Boolean,
+      },
+      model: {
+        prop: 'checked', // <-- default
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput (event) {
+          this.$emit('change', event.target.checked)
+        }
+      },
+      template: `
+        <input
+          type="checkbox"
+          v-bind:checked="false"
+          v-on:change="updateInput"
+        >
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        subscribe: false
+      },
+      methods: {
+        submitForm ($event) {
+          // Use FormData()
+          // let form = $event.target
+          // let formData = new FormData(form)
+          // const formData = new FormData()
+          // for (var key in this.books) {
+          //   formData.append(key, this.books[key])
+          // }
+          // Or use URLSearchParams()
+          // const params = new URLSearchParams()
+          // for (var key in this.books) {
+          //   params.append(key, this.books[key])
+          // }
+
+          // Best with qs - https://github.com/ljharb/qs
+          // let payload = {
+          //   subscribe: this.subscribe
+          // }
+          // var str = Qs.stringify(payload)
+
+          let form = $event.target
+          let formData = new FormData(form)
+
+          axios.post('./server.php', formData)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

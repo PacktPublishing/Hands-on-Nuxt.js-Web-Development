@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="google"
+    errors="0" failures="1" hostname="" id="" package="google" skipped="0"
+    tests="1" time="4.870" timestamp="">
+  
+    <testcase name="Demo test Google" classname="google" time="4.870" assertions="5">
+
+    
+
+    
+
+    
+
+      <failure message="Testing if element &lt;div.g:first-child&gt; contains text: &#34;Rembrandt - Wikipedia&#34; in 1000 ms. - expected [0;32m&#34;Rembrandt - Wikipedia&#34;[0m but got: [0;31m&#34;Képtalálatok - rembrandt van rijn
+További képek a következő kifejezésre: rembrandt van rijn
+Sértő képek bejelentése&#34;[0m">    at Object.Demo test Google (/var/www/html/repo-bitbucket/nuxt-packt/chapter-13/nightwatch/tests/google.js:14:15)
+    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
+
+    <failure message="    at Object.Demo test Google (/var/www/html/repo-bitbucket/nuxt-packt/chapter-13/nightwatch/tests/google.js:14:15)">    at process._tickCallback (internal/process/next_tick.js:68:7)</failure>
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

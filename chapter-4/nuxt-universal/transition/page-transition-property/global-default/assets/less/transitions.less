@@ -1,0 +1,20 @@
+// Global Settings
+// https://nuxtjs.org/guide/routing#transitions
+
+// Variable.
+@fade-selector: page;
+
+.@{fade-selector}-enter,
+.@{fade-selector}-leave-to {
+  opacity: 0;
+}
+
+.@{fade-selector}-leave,
+.@{fade-selector}-enter-to {
+  opacity: 1;
+}
+
+.@{fade-selector}-enter-active,
+.@{fade-selector}-leave-active {
+  transition: opacity 300ms;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "example-auth-routes",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "body-parser": "^1.17.2",
+    "cookie": "^0.4.0",
+    "cookie-session": "^1.3.3",
+    "express": "^4.15.3",
+    "nuxt": "latest"
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "post-update": "yarn upgrade --latest"
+  }
+}

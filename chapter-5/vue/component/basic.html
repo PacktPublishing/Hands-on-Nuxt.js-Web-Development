@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <ol>
+      <!--
+        Now we provide each user-item with the todo object
+        it's representing, so that its content can be dynamic.
+        We also need to provide each component with a "key"
+        to give Vue a hint so that it can track each node’s identity,
+        and thus reuse and reorder existing elements, you need to
+        provide a unique key attribute for each item. An ideal value
+        for key would be the unique id of each item.
+
+        It is recommended to provide a key with v-for whenever
+        possible, unless the iterated DOM content is simple, or you
+        are intentionally relying on the default behavior for
+        performance gains.
+
+        https://vuejs.org/v2/guide/list.html#key
+      -->
+      <user-item
+        v-for="user in users"
+        v-bind:user="user"
+        v-bind:key="user.id"
+      ></user-item>
+    </ol>
+  </div>
+
+
+  <script type="text/javascript">
+    // https://vuejs.org/v2/guide/index.html#Composing-with-Components
+    Vue.component('user-item', {
+      // The user-item component now accepts a
+      // "prop", which is like a custom attribute.
+      // This prop is called todo.
+      props: ['user'], // which is item in the loop.
+      template: '<li>{{ user.name }}</li>'
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        users: [
+          { id: 0, name: 'John Doe' },
+          { id: 1, name: 'Jane Doe' },
+          { id: 2, name: 'Mary Moe' }
+        ]
+      }
+    })
+  </script>
+
+</body>
+</html>

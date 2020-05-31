@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vee-validate@latest"></script>
+</head>
+<body>
+
+  <div id="app">
+    <ValidationProvider rules="secret" v-slot="{ errors }">
+      <input v-model="email" type="text">
+      <span>{{ errors[0] }}</span>
+    </ValidationProvider>
+  </div>
+
+  <script type="text/javascript">
+  // Add a rule.
+  VeeValidate.extend('secret', {
+    validate: value => value === 'example',
+    message: 'This is not the magic word'
+  })
+
+  // Register the component globally.
+  Vue.component('ValidationProvider', VeeValidate.ValidationProvider);
+
+  new Vue({
+    el: '#app',
+    data: {
+      email: null
+    }
+  })
+</script>
+
+</body>
+</html>

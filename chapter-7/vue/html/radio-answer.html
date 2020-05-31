@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <!-- <input type="radio" name="gender" value="male"> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other -->
+
+
+  <div id="app">
+
+    <form id="myForm" v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <input type="radio" name="answer" value="yes"> Yes<br>
+      <input type="radio" name="answer" value="no"> No<br>
+
+    <!-- <input
+      type="radio"
+      v-bind:checked="answer"
+      v-on:change="answer = $event.target.value"
+    > -->
+
+   <!-- works with new FormData -->
+   <!--  <input
+      type="radio"
+      name="answer"
+      value="yes"
+      v-bind:checked="answer == 'yes'"
+      v-on:change="answer = $event.target.value"
+    >Yes<br>
+
+    <input
+      type="radio"
+      name="answer"
+      value="no"
+      v-bind:checked="answer == 'no'"
+      v-on:change="answer = $event.target.value"
+    >No<br> -->
+
+    <p>...........</p>
+
+    <!-- works with new FormData -->
+    <input type="radio" value="yes" v-model="answer" name="answer"> Yes <br>
+    <input type="radio" value="no" v-model="answer" name="answer"> No <br>
+
+    <p>...........</p>
+
+    <!-- works with new FormData -->
+    <!-- does not work with new FormData unless use v-bind:value="value" -->
+    <!-- <custom-radio v-model="answer" value="yes" name="answer"></custom-radio> Yes <br>
+    <custom-radio v-model="answer" value="no" name="answer"></custom-radio> No <br>
+ -->
+    {{ answer }}
+
+    <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-radio', {
+      props: {
+        checked: String,
+        value: String
+      },
+      model: {
+        prop: 'checked', // <-- default
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput (event) {
+          if (event.target.checked === true) {
+            this.$emit('change', this.value)
+          }
+        }
+      },
+      template: `
+        <input
+          type="radio"
+          v-bind:value="value"
+          v-bind:checked="checked == value"
+          v-on:change="updateInput"
+        >
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        answer: null
+      },
+      methods: {
+        submitForm ($event) {
+          // qs - https://github.com/ljharb/qs
+          let payload = {
+            answer: this.answer
+          }
+          var str = Qs.stringify(payload)
+
+          // does not work with custom input components
+          let form = $event.target
+          let formData = new FormData(form)
+
+          axios.post('./server.php', formData)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Vue app title to be replaced via Vue Meta - https://github.com/nuxt/vue-meta</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/vue-meta@1.5.8/lib/vue-meta.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>Hello App!</h1>
+    <p>
+      <router-link to="/foo">Go to Foo</router-link>
+      <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <transition
+      appear
+      v-bind:css="false"
+      v-on:before-enter="beforeEnter"
+      v-on:enter="enter"
+      v-on:leave="leave"
+      v-on:after-leave="afterLeave">
+      <router-view></router-view>
+    </transition>
+  </div>
+
+  <script type="text/javascript">
+    // https://github.com/nuxt/vue-meta
+
+    // 0. If using a module system (e.g. via vue-cli), import Vue and VueRouter
+    // and then call `Vue.use(VueRouter)`.
+
+    // 1. Define route components.
+    // These can be imported from other files
+    const Foo = {
+      name: 'Foo',
+      template: '<div>foo</div>',
+      metaInfo: {
+        title: 'My Awesome Webapp',
+        // override the parent template and just use the above title only
+        titleTemplate: null,
+        meta: [
+          { vmid: 'description', name: 'description', content: 'foo' }
+        ]
+      }
+    }
+    const Bar = {
+      name: 'Bar',
+      template: '<div>bar</div>',
+      metaInfo: {
+        // title will be injected into parent titleTemplate
+        title: 'Bar',
+        meta: [
+          { vmid: 'description', name: 'description', content: 'bar' }
+        ]
+      }
+    }
+
+    // 2. Define some routes
+    // Each route should map to a component. The "component" can
+    // either be an actual component constructor created via
+    // `Vue.extend()`, or just a component options object.
+    // We'll talk about nested routes later.
+    const routes = [
+      { path: '/foo', component: Foo },
+      { path: '/bar', component: Bar }
+    ]
+
+    // 3. Create the router instance and pass the `routes` option
+    // You can pass in additional options here, but let's
+    // keep it simple for now.
+    const router = new VueRouter({
+      routes // short for `routes: routes`
+    })
+
+    // 4. Create and mount the root instance.
+    // Make sure to inject the router with the router option to make the
+    // whole app router-aware.
+    const app = new Vue({
+      name: 'App',
+      data: function () {
+        return {
+          el: null
+        }
+      },
+      metaInfo: {
+        // if no subcomponents specify a metaInfo.title, this title will be used
+        title: 'Default Title',
+        // all titles will be injected into this template
+        titleTemplate: '%s | My Awesome Webapp',
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          { vmid: 'description', name: 'description', content: 'parent' }
+        ]
+      },
+      router,
+      methods: {
+        beforeEnter (el) {
+          $(el).hide()
+        },
+        enter (el, done) {
+          $(el).fadeTo('slow', 1)
+          done()
+        },
+        leave (el, done) {
+          $(el).fadeTo('slow', 0, function () {
+            $(el).hide()
+          })
+          done()
+        },
+        afterLeave (el) {
+          $(el).hide()
+        }
+      }
+    }).$mount('#app')
+
+    // Now the app has started!
+  </script>
+
+</body>
+</html>

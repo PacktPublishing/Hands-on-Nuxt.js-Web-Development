@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-php",
+  "version": "1.0.0",
+  "description": "My phenomenal Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.6.0",
+    "@nuxtjs/proxy": "^1.3.3",
+    "axios": "^0.19.0",
+    "nuxt": "^2.9.2",
+    "qs": "^6.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

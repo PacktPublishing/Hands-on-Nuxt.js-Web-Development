@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <!-- <input type="radio" name="gender" value="male"> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other -->
+
+  <div id="app">
+    <form id="myForm" v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <input type="radio" v-model="gender" value="male" name="gender"></input>Male<br/>
+      <input type="radio" v-model="gender" value="female" name="gender"></input>Female<br/>
+      <input type="radio" v-model="gender" value="other" name="gender"></input>Other<br/>
+
+    <!-- <input
+      type="radio"
+      name="gender"
+      value="male"
+      v-bind:checked="gender == 'male'"
+      v-on:change="gender = $event.target.value"
+    >Male<br>
+
+    <input
+      type="radio"
+      name="gender"
+      value="female"
+      v-bind:checked="gender == 'female'"
+      v-on:change="gender = $event.target.value"
+    >Female<br>
+
+    <input
+      type="radio"
+      name="gender"
+      value="other"
+      v-bind:checked="gender == 'other'"
+      v-on:change="gender = $event.target.value"
+    >Other<br> -->
+
+    {{ gender }}
+
+    <br/>
+
+    <!-- <custom-radio v-model="gender" value="male" name="gender"></custom-radio>Male<br/>
+    <custom-radio v-model="gender" value="female" name="gender"></custom-radio>Female<br/>
+    <custom-radio v-model="gender" value="other" name="gender"></custom-radio>Other<br/> -->
+
+    <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-radio', {
+      props: {
+        checked: String,
+        value: String
+      },
+      model: {
+        prop: 'checked', // <-- default
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput () {
+          this.$emit('change', this.value)
+        }
+      },
+      template: `
+        <input
+          type="radio"
+          v-bind:value="value"
+          v-bind:checked="checked == value"
+          v-on:change="updateInput"
+        >
+      `,
+    })
+
+    // Vue.component('custom-radio', {
+    //   props: {
+    //     value: String,
+    //     gender: String
+    //   },
+    //   model: {
+    //     prop: 'gender', // <-- custom
+    //     // prop: 'checked', // <-- default
+    //     event: 'change' // <-- default
+    //   },
+    //   computed: {
+    //     checked () {
+    //       return this.gender == this.value
+    //     }
+    //   },
+    //   methods: {
+    //     updateInput () {
+    //       this.$emit('change', this.value)
+    //     }
+    //   },
+    //   template: `
+    //     <input
+    //       type="radio"
+    //       name="gender"
+    //       v-bind:value="value"
+    //       v-bind:checked="gender == value"
+    //       v-on:change="updateInput"
+    //     >
+    //   `,
+    // })
+
+    new Vue({
+      el: '#app',
+      data: {
+        gender: null
+      },
+      methods: {
+        submitForm ($event) {
+          // qs - https://github.com/ljharb/qs
+          // let payload = {
+          //   gender: this.gender
+          // }
+          // var str = Qs.stringify(payload)
+
+          let form = $event.target
+          let formData = new FormData(form)
+
+          axios.post('./server.php', formData)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

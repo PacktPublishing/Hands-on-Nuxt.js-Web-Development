@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue App</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <h1>Hello App!</h1>
+  <p>
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+  </p>
+  <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+    var myMixin = {
+      created () {
+        this.hello()
+      },
+      methods: {
+        hello () {
+          console.log('hello from mixin!')
+        }
+      }
+    }
+
+    const Foo = Vue.extend({
+      mixins: [myMixin],
+      template: '<div>foo</div>'
+    })
+
+    const Bar = { template: '<div>bar</div>' }
+
+    const routes = [
+      { path: '/foo', component: Foo },
+      { path: '/bar', component: Bar }
+    ]
+
+    const router = new VueRouter({
+      routes
+    })
+
+    const app = new Vue({
+      router
+    }).$mount('#app')
+
+    // Now the app has started!
+</script>
+
+</body>
+</html>

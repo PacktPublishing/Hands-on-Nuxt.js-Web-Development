@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <ol>
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:item="item"
+        v-bind:key="item.id"
+        v-on:add-item="addItem"
+        v-on:delete-item="deleteItem"
+      ></todo-item>
+    </ol>
+
+    <p>{{ cart }}</p>
+    <p>&pound;{{ total }}</p>
+  </div>
+
+  <script type="text/javascript">
+    // https://vuejs.org/v2/guide/index.html#Composing-with-Components
+    // https://www.telerik.com/blogs/how-to-emit-data-in-vue-beyond-the-vuejs-documentation
+    Vue.component('todo-item', {
+      props: ['item'],
+      data () {
+        return {
+          checked: false,
+        }
+      },
+      template: '<li><input type="checkbox" :name="item.id" v-model="checked"> {{ item.text }} &pound;{{ item.price }}</li>',
+      methods: {
+        addToCart (item) {
+          this.$emit('add-item', item)
+        }
+      },
+      watch: {
+        checked (boolean) {
+          if (boolean === false) {
+            return this.$emit('delete-item', this.item)
+          }
+          this.$emit('add-item', this.item)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        cart: [],
+        total: 0,
+        groceryList: [
+          { id: 0, text: 'Lentils', price: 2 },
+          { id: 1, text: 'Cauliflower', price: 1.5 },
+          { id: 2, text: 'Broccoli', price: 1 }
+        ]
+      },
+      methods: {
+        addItem (item) {
+          this.cart.push(item)
+          this.total = this.shoppingCartTotal
+        },
+        deleteItem (item) {
+          this.cart.splice(this.cart.findIndex(e => e === item), 1)
+          this.total = this.shoppingCartTotal
+        }
+      },
+      computed: {
+        shoppingCartTotal() {
+          // let count = 0
+          // for (item of this.cart) {
+          //   count += item.price
+          // }
+          // this.total = count
+
+          // Extract the prices into array.
+          // let prices = this.cart.map(function (item) {
+          //   return item.price
+          // })
+          let prices = this.cart.map(item => item.price)
+
+          // Sum up the prices in the array.
+          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Examples
+          // var initialValue = 0
+          // let sum = prices.reduce(function (accumulator, currentValue) {
+          //   return accumulator + currentValue;
+          // }, initialValue)
+          let sum = prices.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+          return sum
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

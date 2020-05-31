@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="todos">
+    <form v-on:submit.prevent="addNewTodo">
+      <label for="new-todo">Add a todo</label>
+      <custom-input v-model="newTodoText"></custom-input>
+      <button>Add</button>
+    </form>
+    <ol>
+      <todo-item
+        v-for="item in todos"
+        v-bind:key="item.id"
+        v-bind:todo="item"
+        v-on:completed="handleCompleted"
+      ></todo-item>
+    </ol>
+    {{ newTodoText }}
+  </div>
+
+  <script type="text/javascript">
+    // https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+    // https://vuejs.org/v2/guide/components-custom-events.html#Customizing-Component-v-model
+    Vue.component('custom-input', {
+      props: ['value'],
+      // model: {
+      //   prop: 'value', // Vue's default
+      //   event: 'input' // Vue's default
+      // },
+      template: '<input v-bind:value="value" placeholder="e.g. Feed the cat" v-on:input="addNewTask">',
+      methods: {
+        addNewTask ($event) {
+          this.$emit('input', $event.target.value)
+        }
+      }
+    })
+
+    Vue.component('todo-item', {
+      props: ['todo'],
+      template: '<li>{{ todo.text }} <button v-on:click="clicked">Completed</button></li>',
+      methods: {
+        clicked () {
+          this.$emit('completed', this.todo)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#todos',
+      data: {
+        newTodoText: '',
+        todos: [
+          {
+            id: 0,
+            text: 'Do the dishes',
+          },
+          {
+            id: 1,
+            text: 'Take out the trash',
+          },
+          {
+            id: 2,
+            text: 'Mow the lawn'
+          }
+        ],
+        nextTodoId: 3
+      },
+      methods: {
+        handleCompleted (todo) {
+          alert(todo.text + ' - Task Done')
+        },
+        addNewTodo: function () {
+          this.todos.push({
+            id: this.nextTodoId++,
+            text: this.newTodoText
+          })
+          this.newTodoText = ''
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

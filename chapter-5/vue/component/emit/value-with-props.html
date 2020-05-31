@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="todos">
+    <ol>
+      <todo-item
+        v-for="item in todoList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+        v-on:completed="handleCompleted"
+      ></todo-item>
+    </ol>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('todo-item', {
+      props: ['todo'],
+      template: '<li>{{ todo.text }} <button v-on:click="clicked">Completed</button></li>',
+      methods: {
+        clicked () {
+          this.$emit('completed', this.todo)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#todos',
+      data: {
+        todoList: [
+          { id: 0, text: 'Feed the cat' },
+          { id: 1, text: 'Mop the floor' },
+          { id: 2, text: 'Make a sandwich' }
+        ]
+      },
+      methods: {
+        handleCompleted (todo) {
+          alert(todo.text + ' - Task Done')
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

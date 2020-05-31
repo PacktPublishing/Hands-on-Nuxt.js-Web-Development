@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vue Local Middlewares</title>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+</head>
+<body>
+
+<div id="app">
+  <p>
+    <router-link to="/page1">Page 1</router-link>
+    <router-link to="/page2">Page 2</router-link>
+  </p>
+  <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+    const Page1 = { template: '<div>Page 1</div>' }
+    const Page2 = { template: '<div>Page 2</div>' }
+
+    const routes = [
+      {
+        path: '/page1',
+        component: Page1,
+        beforeEnter: (to, from, next) => {
+          console.log('before entering page 1')
+          next()
+        }
+      },
+      {
+        path: '/page2',
+        component: Page2,
+        beforeEnter (to, from, next) {
+          console.log('before entering page 2')
+          next()
+        }
+      }
+    ]
+
+    const router = new VueRouter({
+      routes
+    })
+
+    const app = new Vue({
+      router
+    }).$mount('#app')
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "server side example",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development backpack",
+    "build": "backpack build",
+    "start": "cross-env NODE_ENV=production node build/main.js"
+  },
+  "dependencies": {
+    "backpack-core": "^0.8.3",
+    "cross-env": "^5.2.0",
+    "koa": "^2.10.0"
+  }
+}

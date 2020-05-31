@@ -1,0 +1,21 @@
+{
+  "name": "koa-skeleton",
+  "version": "1.0.0",
+  "description": "server side example",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development backpack",
+    "build": "backpack build",
+    "start": "cross-env NODE_ENV=production node build/main.js"
+  },
+  "dependencies": {
+    "backpack-core": "^0.8.3",
+    "cross-env": "^5.2.0",
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-favicon": "^2.0.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  }
+}

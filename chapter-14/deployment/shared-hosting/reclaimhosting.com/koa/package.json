@@ -1,0 +1,11 @@
+{
+  "name": "koa-sample",
+  "version": "1.0.0",
+  "description": "My marvelous koa.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "dependencies": {
+    "koa": "^2.11.0"
+  },
+  "devDependencies": {}
+}

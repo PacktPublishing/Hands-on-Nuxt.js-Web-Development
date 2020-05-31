@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <form v-on:submit.prevent="submitForm" action="/" method="post" id="form" novalidate="true">
+
+      <!-- <select name="favourite">
+        <option disabled value="">Please select one</option>
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+      </select> -->
+
+      <p>...........</p>
+
+      <select v-model="favourite" name="favourite">
+        <option disabled value="">Please select one</option>
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+      </select>
+
+      <p>...........</p>
+
+      <select
+        v-bind:value="favourite"
+        v-on:change="favourite = $event.target.value"
+        name="favourite"
+      >
+        <option disabled value="">Please select one</option>
+        <option value="On the Origin of Species">On the Origin of Species</option>
+        <option value="A Brief History of Time">A Brief History of Time</option>
+        <option value="The Selfish Gene">The Selfish Gene</option>
+      </select>
+
+      <p>...........</p>
+
+      <!-- <custom-select v-model="favourite" name="favourite"></custom-select> <br/> -->
+
+      {{ favourite }}
+
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-select', {
+      props: {
+        value: String
+      },
+      model: {
+        prop: 'value', // <-- default
+        event: 'change' // <-- default
+      },
+      methods: {
+        updateInput (event) {
+          this.$emit('change', event.target.value)
+        }
+      },
+      template: `
+        <select
+          v-bind:value="value"
+          v-on:change="updateInput"
+        >
+          <option disabled value="">Please select one</option>
+          <option value="On the Origin of Species">On the Origin of Species</option>
+          <option value="A Brief History of Time">A Brief History of Time</option>
+          <option value="The Selfish Gene">The Selfish Gene</option>
+        </select>
+      `,
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        favourite: null
+      },
+      methods: {
+        submitForm ($event) {
+          // Use FormData()
+          // let form = $event.target
+          // let formData = new FormData(form)
+          // const formData = new FormData()
+          // for (var key in this.books) {
+          //   formData.append(key, this.books[key])
+          // }
+          // Or use URLSearchParams()
+          // const params = new URLSearchParams()
+          // for (var key in this.books) {
+          //   params.append(key, this.books[key])
+          // }
+
+          // Best with qs - https://github.com/ljharb/qs
+          // let payload = {
+          //   books: this.books
+          // }
+          // var str = Qs.stringify(payload)
+
+          let form = $event.target
+          let formData = new FormData(form)
+
+          axios.post('./server.php', formData)
+          .then((response) => {
+            // success callback
+            console.log(response.data)
+          }, (response) => {
+            // error callback
+          })
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "require": {
+        "zendframework/zend-diactoros": "^2.1",
+        "zendframework/zend-httphandlerrunner": "^1.1"
+    }
+}

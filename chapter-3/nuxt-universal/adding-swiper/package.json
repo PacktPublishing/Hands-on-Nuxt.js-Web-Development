@@ -1,0 +1,21 @@
+{
+  "name": "nuxt-app",
+  "version": "1.0.0",
+  "description": "My fantabulous Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.6.3",
+    "jquery": "^3.5.1",
+    "nuxt": "^2.12.2",
+    "swiper": "^5.4.1",
+    "what-input": "^5.2.9"
+  },
+  "devDependencies": {}
+}

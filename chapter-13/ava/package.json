@@ -1,0 +1,29 @@
+{
+  "name": "ava-basic",
+  "version": "1.0.0",
+  "description": "AVA basic tests",
+  "author": "Lau Tiam Kok",
+  "private": true,
+  "scripts": {
+    "test": "ava --verbose",
+    "test:watch": "ava --watch"
+  },
+  "ava": {
+    "require": [
+      "./setup.js",
+      "@babel/polyfill"
+    ],
+    "files": [
+      "test/**/*"
+    ]
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.4.4",
+    "ava": "^2.1.0"
+  }
+}

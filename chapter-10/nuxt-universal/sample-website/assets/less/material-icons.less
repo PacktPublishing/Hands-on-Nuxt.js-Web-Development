@@ -1,0 +1,70 @@
+/**
+ * ===============================================================
+ * Material Icons
+ * ===============================================================
+ */
+
+.material-icons {
+    padding: 0;
+    margin: 0;
+
+    &.md-light {
+        color: rgba(255, 255, 255, 1);
+    }
+    &.md-dark-background {
+        // background-color: @grey-xdark
+    }
+    &.md-60 {
+        font-size: 60px;
+    }
+
+    &.float-to-right {
+      // border: 4px solid red;
+      font-size: 20px;
+      float: right;
+      margin-left: 5px;
+      margin-top: 1px;
+    }
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@{path-node-modules}/material-design-icons/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('@{path-node-modules}/material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('@{path-node-modules}/material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('@{path-node-modules}/material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    // display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+
+    &.md-80 {
+        font-size:80px;
+        line-height: 20px;
+    }
+}

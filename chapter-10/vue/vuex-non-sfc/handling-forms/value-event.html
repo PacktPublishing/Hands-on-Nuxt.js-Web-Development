@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuex app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+  <script src="https://unpkg.com/vuex@2.0.0"></script>
+</head>
+<body>
+
+  <div id="demo">
+    <input v-bind:value="message" v-on:input="updateMessage">
+    {{ message }}
+  </div>
+
+  <script type="text/javascript">
+    const store = new Vuex.Store({
+      strict: true,
+      state: {
+        message: ''
+      },
+      mutations: {
+        updateMessage (state, message) {
+          state.message = message
+        }
+      }
+    })
+
+    new Vue({
+      el: '#demo',
+      store: store,
+      computed: {
+        // https://stackoverflow.com/questions/47654679/how-to-use-mapgetters-when-vue-cdn-is-used
+        ...Vuex.mapState({
+          message: state => state.message
+        })
+      },
+      methods: {
+        updateMessage (e) {
+          this.$store.commit('updateMessage', e.target.value)
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
