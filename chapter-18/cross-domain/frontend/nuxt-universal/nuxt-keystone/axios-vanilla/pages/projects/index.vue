@@ -141,20 +141,14 @@ export default {
       }
     `
 
-    // Delete the matched property from the route object before
-    // passing to axios as it cause some unknown bug.
-    delete route.matched
-
     try {
-      let x = await $axios.post('/admin/api', {
+      let { data } = await $axios.post('/admin/api', {
         query: GET_PROJECTS,
         route,
         staticPath: route.path + '/' + pageNumber, //'/projects/1'
-        // staticPath: '/projects/' + pageNumber
       })
-      // console.log('data ===', x)
 
-      let totalPosts = x.data.data._allProjectsMeta.count
+      let totalPosts = data.data._allProjectsMeta.count
       let totalMaxPages = Math.ceil(totalPosts / postsPerPage)
       let nextPage = pageNumber === totalMaxPages ? null : pageNumber + 1
       let prevPage = pageNumber === 1 ? null : pageNumber - 1
@@ -163,9 +157,9 @@ export default {
 
       // let posts = await $axios.get('/wp-json/api/v1/projects/' + pageNumber)
       return {
-        post: x.data.data.allPages[0],
+        post: data.data.allPages[0],
         posts: {
-          items: x.data.data.allProjects,
+          items: data.data.allProjects,
           totalPages: totalMaxPages,
           currentPage: pageNumber,
           nextPage: nextPage,

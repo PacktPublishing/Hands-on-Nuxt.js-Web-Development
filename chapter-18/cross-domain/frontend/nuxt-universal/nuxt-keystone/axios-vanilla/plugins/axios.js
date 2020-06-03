@@ -32,7 +32,7 @@ const api = axios.create({ baseURL })
 //   return Promise.reject(error.message);
 // })
 
-if(process.client && process.static) {
+if (process.client && process.static) {
   api.interceptors.request.use(config => {
     const configData = config.data
 
@@ -66,7 +66,6 @@ if (process.server && process.static) {
     // Use dirname(path) to get dist/data/wp-json/api/v1/page/
     // from dist/data/wp-json/api/v1/page/about.json
     // Then use mkdirp to create directories.
-    console.log('dirname(path) =', dirname(path))
     await mkdirp(dirname(path))
     writeFileSync(path, content)
     return response

@@ -117,7 +117,6 @@ export default {
       let { data: { data: result } } = await $axios.post('/admin/api', {
         query: GET_PAGE,
         staticPath: route.path, //'/projects/1', etc
-        // route
       })
 
       return {
