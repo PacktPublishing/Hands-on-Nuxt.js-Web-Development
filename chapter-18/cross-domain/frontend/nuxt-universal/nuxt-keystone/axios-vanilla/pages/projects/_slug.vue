@@ -87,8 +87,7 @@
 export default {
   name: 'slug',
 
-  async asyncData ({ params, error, $axios }) {
-
+  async asyncData ({ params, error, $axios, route }) {
     const GET_PAGE = `
       query {
         allProjects (search: "${ params.slug }") {
@@ -113,9 +112,12 @@ export default {
       }
     `
     try {
+      delete route.matched
 
       let { data: { data: result } } = await $axios.post('/admin/api', {
-        query: GET_PAGE
+        query: GET_PAGE,
+        staticPath: route.path, //'/projects/1', etc
+        // route
       })
 
       return {

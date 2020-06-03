@@ -70,6 +70,8 @@ export default {
     '~/plugins/axios.js',
     '~/plugins/utils.js',
     '~/plugins/mixins.js',
+    '~/plugins/client-only/foundation.client.js', //  client side only
+    '~/plugins/client-only/aos.client.js', // client side only
   ],
 
   /*
@@ -138,16 +140,44 @@ export default {
       const GET_PROJECTS = `
         query {
           allProjects {
-            _label_
+            name
           }
         }
       `
+      // const { data } = await axios.post(remoteUrl + '/admin/api', {
+      //   query: GET_PROJECTS
+      // })
+      // return data.data.allProjects.map((project) => {
+      //   return '/projects/' + project.name
+      // })
+
       const { data } = await axios.post(remoteUrl + '/admin/api', {
         query: GET_PROJECTS
       })
-      return data.data.allProjects.map((project) => {
-        return '/projects/' + project._label_
+
+      const routesProjects = data.data.allProjects.map(project => {
+        return {
+          route: '/projects/' + project.name,
+          payload: project
+        }
       })
+
+      // Count total items and divide the total with the number of items per-page
+      let totalMaxPages = Math.ceil(routesProjects.length / 6)
+      let pagesProjects = []
+
+      // Loop with ES6.
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+      Array(totalMaxPages).fill().map((item, index) => {
+        pagesProjects.push({
+          route: '/projects?page=' + (index + 1),
+          payload: null
+        })
+      })
+
+      const routes = [...routesProjects, ...pagesProjects]
+      // console.log('routes =', routes)
+      return routes
     }
   },
 }

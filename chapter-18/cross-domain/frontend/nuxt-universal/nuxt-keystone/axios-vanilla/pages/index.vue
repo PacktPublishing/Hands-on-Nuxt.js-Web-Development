@@ -86,7 +86,8 @@ export default {
       // Destructuring deeper properties - result acts as the
       // variable storing the value.
       let { data: { data: result } } = await $axios.post('/admin/api', {
-        query: GET_PAGE
+        query: GET_PAGE,
+        staticPath: '/home'
       })
       return {
         post: result.allPages[0]

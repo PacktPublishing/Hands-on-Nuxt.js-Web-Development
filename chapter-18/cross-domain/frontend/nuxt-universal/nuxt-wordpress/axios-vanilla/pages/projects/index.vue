@@ -109,7 +109,7 @@ export default {
     }
 
     try {
-      let post = await $axios.get('/wp-json/api/v1/page/projects')
+      let post = await $axios.get('/wp-json/api/v1/page/projects', { parse: true })
       let posts = await $axios.get('/wp-json/api/v1/projects/' + pageNumber)
       return {
         post: post.data,

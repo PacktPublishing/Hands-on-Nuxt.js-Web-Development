@@ -8,7 +8,7 @@ dotenv.config()
 
 // Host base.
 const protocol = 'http'
-const host = process.env.NODE_ENV === 'production' ? 'my-domain.com' : 'localhost'
+const host = process.env.NODE_ENV === 'production' ? 'localhost' : 'localhost'
 
 console.log('process.env.NUXT_ENV_GEN =', process.env.NUXT_ENV_GEN)
 console.log('process.env.DB_HOST =', process.env.DB_HOST)
@@ -132,10 +132,47 @@ module.exports = {
   generate: {
     fallback: true,
     routes: async function () {
-      const { data } = await axios.get(remoteUrl + '/wp-json/api/v1/projects')
-      return data.map((project) => {
-        return '/projects/' + project.post_name
+      const projects = await axios.get(remoteUrl + '/wp-json/api/v1/projects')
+      const routesProjects = projects.data.map((project) => {
+        return {
+          route: '/projects/' + project.post_name,
+          payload: project
+        }
       })
+
+      // Count total items and divide the total with the number of items per-page
+      let totalMaxPages = Math.ceil(routesProjects.length / 6)
+      let pagesProjects = []
+
+      // Loop with ES6.
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+      Array(totalMaxPages).fill().map((item, index) => {
+        pagesProjects.push({
+          route: '/projects?page=' + (index + 1),
+          payload: null
+        })
+      })
+      // Other options:
+      // let page = 1
+      // while (page <= totalMaxPages) {
+      //   pagesProjects.push({
+      //     route: '/projects?page=' + page,
+      //     payload: null
+      //   })
+      //   page ++
+      // }
+      // for (let page = 1; page <= totalMaxPages; page ++) {
+      //   pagesProjects.push({
+      //     route: '/projects?page=' + page,
+      //     payload: null
+      //   })
+      // }
+      // console.log('pages =', pages)
+
+      // ES6 concat arrays.
+      const routes = [...routesProjects, ...pagesProjects]
+      // console.log('routes =', routes)
+      return routes
     }
   }
 }

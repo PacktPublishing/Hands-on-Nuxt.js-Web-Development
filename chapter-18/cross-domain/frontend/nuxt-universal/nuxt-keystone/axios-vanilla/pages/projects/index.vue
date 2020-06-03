@@ -101,7 +101,7 @@
 import $ from 'jquery'
 
 export default {
-  async asyncData ({ query, error, $axios }) {
+  async asyncData ({ query, error, $axios, route }) {
     // Get the page number from the query.
     // Always make the negative number positive.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
@@ -141,12 +141,20 @@ export default {
       }
     `
 
-    try {
-      let { data } = await $axios.post('/admin/api', {
-        query: GET_PROJECTS
-      })
+    // Delete the matched property from the route object before
+    // passing to axios as it cause some unknown bug.
+    delete route.matched
 
-      let totalPosts = data.data._allProjectsMeta.count
+    try {
+      let x = await $axios.post('/admin/api', {
+        query: GET_PROJECTS,
+        route,
+        staticPath: route.path + '/' + pageNumber, //'/projects/1'
+        // staticPath: '/projects/' + pageNumber
+      })
+      // console.log('data ===', x)
+
+      let totalPosts = x.data.data._allProjectsMeta.count
       let totalMaxPages = Math.ceil(totalPosts / postsPerPage)
       let nextPage = pageNumber === totalMaxPages ? null : pageNumber + 1
       let prevPage = pageNumber === 1 ? null : pageNumber - 1
@@ -155,9 +163,9 @@ export default {
 
       // let posts = await $axios.get('/wp-json/api/v1/projects/' + pageNumber)
       return {
-        post: data.data.allPages[0],
+        post: x.data.data.allPages[0],
         posts: {
-          items: data.data.allProjects,
+          items: x.data.data.allProjects,
           totalPages: totalMaxPages,
           currentPage: pageNumber,
           nextPage: nextPage,

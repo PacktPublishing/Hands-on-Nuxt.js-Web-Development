@@ -96,6 +96,8 @@
 </template>
 
 <script>
+import $ from 'jquery'
+
 const GET_PAGE = `
   query {
     allPages (search: "contact") {
@@ -111,10 +113,11 @@ const GET_PAGE = `
   }
 `
 export default {
-  async asyncData ({ error, $axios }) {
+  async asyncData ({ error, $axios, route }) {
     try {
       let { data } = await $axios.post('/admin/api', {
-        query: GET_PAGE
+        query: GET_PAGE,
+        staticPath: route.path, // '/contact'
       })
       return {
         post: data.data.allPages[0]
@@ -133,5 +136,9 @@ export default {
       title: this.post.title || 'all',
     }
   },
+
+  mounted() {
+    $(document).foundation()
+  }
 }
 </script>

@@ -18,6 +18,7 @@
     "foundation-icon-fonts": "^0.1.1",
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.0",
+    "mkdirp": "^1.0.4",
     "nuxt": "^2.12.2",
     "swiper": "^5.3.7",
     "what-input": "^5.2.7"
