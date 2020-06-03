@@ -144,7 +144,6 @@ export default {
     try {
       let { data } = await $axios.post('/admin/api', {
         query: GET_PROJECTS,
-        route,
         staticPath: route.path + '/' + pageNumber, //'/projects/1'
       })
 
