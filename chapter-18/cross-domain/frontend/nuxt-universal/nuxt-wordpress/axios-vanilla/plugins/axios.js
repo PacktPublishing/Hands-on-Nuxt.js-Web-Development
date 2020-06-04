@@ -10,26 +10,26 @@ if (process.client && process.static) {
 
 const api = axios.create({ baseURL })
 
+// Intercept the request by adding .json to the request url.
+if (process.client && process.static) {
+  api.interceptors.request.use(config => {
+    config.url = config.url + '.json'
+    return config
+  })
+}
+
 // Stream data for static generation.
 // @ref: https://github.com/stursby/nuxt-static
 if (process.server && process.static) {
-  const mkdirp = require('mkdirp')
-  const { join, dirname } = require('path')
-  const { writeFileSync } = require('fs')
+  const { streamContent } = require('~/assets/js/stream-content')
 
   api.interceptors.response.use(async response => {
     const content = JSON.stringify(response.data)
-    // console.log('response.data =', content)
+    const path = './dist' + baseURLStatic + response.request.path + '.json'
 
-    // Do something with response data
-    const path = join('./dist', baseURLStatic, response.request.path + '.json')
-    console.log('Save', path)
+    // Stream content.
+    await streamContent(path, content)
 
-    // Use dirname(path) to get dist/data/wp-json/api/v1/page/
-    // from dist/data/wp-json/api/v1/page/about.json
-    // Then use mkdirp to create directories.
-    await mkdirp(dirname(path))
-    writeFileSync(path, content)
     return response
   }, error => {
     // Do something with response error

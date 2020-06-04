@@ -35,10 +35,15 @@ const api = axios.create({ baseURL })
 if (process.client && process.static) {
   api.interceptors.request.use(config => {
     const configData = config.data
+    const staticPath = configData.staticPath
+
+    // Remove one or more trailing slashes from the path on refresh.
+    const cleanStaticPath = staticPath.replace(/\/+$/, '')
+    console.log('cleanStaticPath =', cleanStaticPath)
 
     // Add static path to the request URL so you will get:
-    // '/admin/api' + '/projects/1' etc
-    config.url = config.url + configData.staticPath
+    // '/admin/api' + '/projects/1' + '.json' etc
+    config.url = config.url + cleanStaticPath + '.json'
     return config
   }, error => {
     return Promise.reject(error)
@@ -48,26 +53,16 @@ if (process.client && process.static) {
 // Stream data for static generation.
 // @ref: https://github.com/stursby/nuxt-static
 if (process.server && process.static) {
-  const mkdirp = require('mkdirp')
-  const { join, dirname } = require('path')
-  const { writeFileSync, existsSync } = require('fs')
+  const { streamContent } = require('~/assets/js/stream-content')
 
   api.interceptors.response.use(async response => {
     const configData = JSON.parse(response.config.data)
     const content = JSON.stringify(response.data)
-    // console.log('configData =', configData)
-    // console.log('response.data =', JSON.stringify(response.data))
+    const path = './dist' + baseURLStatic + response.request.path + configData.staticPath + '.json'
 
-    // Do something with response data
-    const path = join('./dist', baseURLStatic, response.request.path, configData.staticPath + '.json')
+    // Stream content.
+    await streamContent(path, content)
 
-    console.log('Save', path)
-    console.log('exist =', path,  existsSync(path))
-    // Use dirname(path) to get dist/data/wp-json/api/v1/page/
-    // from dist/data/wp-json/api/v1/page/about.json
-    // Then use mkdirp to create directories.
-    await mkdirp(dirname(path))
-    writeFileSync(path, content)
     return response
   }, error => {
     // Do something with response error

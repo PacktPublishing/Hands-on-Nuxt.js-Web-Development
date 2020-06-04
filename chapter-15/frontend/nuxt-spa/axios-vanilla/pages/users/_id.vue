@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'id',
   async asyncData ({ $axiosTypicode, params, error }) {

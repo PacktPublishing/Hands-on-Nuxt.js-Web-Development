@@ -22,7 +22,7 @@
           <div class="small-12 cell">
             <ul class="align-center menu vertical">
               <li v-for="user in users" v-bind:key="user.id">
-                <nuxt-link :to="'users/' + user.id">
+                <nuxt-link :to="'/users/' + user.id">
                   {{ user.name }}
                 </nuxt-link>
               </li>
@@ -40,16 +40,14 @@
 
 <script>
 // import axios from 'axios'
-// console.log('axios.defaults.baseURL =', axios.defaults.baseURL)
+// import { api } from '~/plugins/axios'
 
 export default {
   async asyncData ({ $axiosTypicode, error }) {
     console.log('$axiosTypicode.defaults.baseURL = ', $axiosTypicode.defaults.baseURL)
     try {
-      let { data } = await $axiosTypicode.get('/users')
-      return {
-        users: data
-      }
+      let { data: users } = await $axiosTypicode.get('/users')
+      return { users }
     } catch (e) {
       return error({
         statusCode: 404,
@@ -57,6 +55,7 @@ export default {
       })
     }
   },
+
   head () {
     return {
       title: 'Users',

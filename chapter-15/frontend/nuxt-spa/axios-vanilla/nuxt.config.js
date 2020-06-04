@@ -1,5 +1,4 @@
-// import axios from 'axios'
-const { api } = require('./plugins/api')
+import axios from 'axios'
 
 // only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
 const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
@@ -39,7 +38,7 @@ export default {
   */
   plugins: [
     { src: '~/plugins/nuxt-client-init.js', ssr: false },
-    { src: '~/plugins/axios-typicode.js', ssr: false }
+    { src: '~/plugins/axios-typicode.js' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -66,7 +65,7 @@ export default {
   // routes. https://nuxtjs.org/api/configuration-generate#routes
   generate: {
     routes: async function () {
-      const { data } = await api.get('/users')
+      const { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
       return data.map((user) => {
         return '/users/' + user.id
       })
