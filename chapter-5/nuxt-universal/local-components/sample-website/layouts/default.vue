@@ -11,7 +11,7 @@
 
                 <div class="large-3 medium-10 small-10 cell">
                   <div class="flex-centre full-height clone-logo-origin">
-                    <BaseLogo />
+                    <Logo />
                   </div>
                 </div>
 
@@ -20,11 +20,11 @@
                     <ul class="menu align-right expanded clone-origin">
 
                       <!-- vue - loop -->
-                      <BaseNav
+                      <Nav
                         v-for="item in nav"
                         v-bind:item="item"
                         v-bind:key="item.slug"
-                      ></BaseNav>
+                      ></Nav>
                       <!-- vue - loop -->
 
                     </ul>
@@ -65,11 +65,11 @@
                   <li><nuxt-link to="/">Home</nuxt-link></li>
 
                   <!-- vue - loop -->
-                  <BaseNav
+                  <Nav
                     v-for="item in nav"
                     v-bind:item="item"
                     v-bind:key="item.slug"
-                  ></BaseNav>
+                  ></Nav>
                   <!-- vue - loop -->
 
                 </ul>
@@ -89,11 +89,11 @@
                 <ul class="menu align-center">
 
                   <!-- vue - loop -->
-                  <BaseSocial
+                  <Social
                     v-for="item in social"
                     v-bind:item="item"
                     v-bind:key="item.name"
-                  ></BaseSocial>
+                  ></Social>
                   <!-- vue - loop -->
 
                 </ul>
@@ -105,7 +105,7 @@
       </div>
 
       <div class="copyright text-center">
-        <BaseCopyright v-bind:copyright="copyright"/>
+        <Copyright v-bind:copyright="copyright"/>
       </div>
 
     </footer>
@@ -113,10 +113,10 @@
 </template>
 
 <script>
-import BaseLogo from '~/components/base-logo.vue'
-import BaseCopyright from '~/components/base-copyright.vue'
-import BaseNav from '~/components/base-nav.vue'
-import BaseSocial from '~/components/base-social.vue'
+import Logo from '~/components/logo.vue'
+import Copyright from '~/components/copyright.vue'
+import Nav from '~/components/nav.vue'
+import Social from '~/components/social.vue'
 
 // Dummy nav.
 const nav = [
@@ -173,10 +173,10 @@ const social = [
 
 export default {
   components: {
-    BaseLogo,
-    BaseCopyright,
-    BaseNav,
-    BaseSocial
+    Logo,
+    Copyright,
+    Nav,
+    Social
   },
 
   data() {

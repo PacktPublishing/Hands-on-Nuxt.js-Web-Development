@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue app</title>
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!-- production version, optimized for size and speed -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+</head>
+<body>
+
+  <div id="app">
+    <foo-item />
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('foo-item', {
+      template: `<div>{{ this.$root.$data.message }}</div>`
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hello world'
+      }
+    })
+  </script>
+
+</body>
+</html>
