@@ -21,7 +21,7 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.12.3",
     "koa-static": "^5.0.0",
-    "nuxt": "^2.10.2"
+    "nuxt": "^2.12.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

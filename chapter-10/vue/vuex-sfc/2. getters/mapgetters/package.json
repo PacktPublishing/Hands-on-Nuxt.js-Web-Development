@@ -1,0 +1,34 @@
+{
+  "name": "vue-component-sfc",
+  "version": "1.0.0",
+  "description": "Vue component SFCs",
+  "author": "Lau Tiam Kok",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "watch": "webpack --watch",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-loader": "^15.9.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2"
+  }
+}
