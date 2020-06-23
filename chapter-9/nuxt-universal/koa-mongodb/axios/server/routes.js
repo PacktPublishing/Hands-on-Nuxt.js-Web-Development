@@ -67,9 +67,9 @@ router.get('/users/:id', async (ctx, next) => {
     ctx.throw(500, err)
   }
 
-  if (data) {
+  if (result) {
     ctx.type = 'json'
-    ctx.body = data
+    ctx.body = result
   } else {
     ctx.throw(404, 'user not found')
   }
