@@ -16,9 +16,9 @@ export default {
   async asyncData ({ $axios, error }) {
     console.log('server once and client side $axios.defaults.baseURL =', $axios.defaults.baseURL)
     try {
-      let result = await $axios.$get('/api/users')
+      let { data } = await $axios.$get('/api/users')
       return {
-        users: result.data
+        users: data
       }
     } catch (err) {
       let data = err.response.data

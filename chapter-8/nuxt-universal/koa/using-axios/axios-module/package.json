@@ -11,18 +11,15 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.5.4",
+    "@nuxtjs/axios": "^5.11.0",
     "backpack-core": "^0.8.4",
-    "consola": "^2.9.0",
-    "cross-env": "^5.2.0",
-    "koa": "^2.7.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-favicon": "^2.0.1",
-    "koa-router": "^7.4.0",
+    "consola": "^2.13.0",
+    "cross-env": "^7.0.2",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-favicon": "^2.1.0",
+    "koa-router": "^9.0.1",
     "koa-static": "^5.0.0",
-    "nuxt": "^2.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nuxt": "^2.13.1"
   }
 }
