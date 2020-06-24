@@ -25,9 +25,11 @@ export default {
   //   let { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
   //   store.dispatch('users/setUsers', data)
   // },
-  async fetch ({ store }) {
+  async fetch () {
     // 'this' can be access inside fetch method.
     // console.log(this)
+    // Access store via this.$nuxt.context.
+    const { store } = this.$nuxt.context
     await store.dispatch('users/getUsers')
   },
   computed: {

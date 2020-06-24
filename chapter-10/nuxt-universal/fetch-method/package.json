@@ -8,11 +8,11 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "nuxt": "^2.12.2"
-  },
-  "devDependencies": {}
+    "axios": "^0.19.2",
+    "nuxt": "^2.13.1"
+  }
 }
