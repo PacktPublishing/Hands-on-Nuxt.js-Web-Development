@@ -10,8 +10,8 @@
     "start": "cross-env NODE_ENV=production node build/main.js"
   },
   "dependencies": {
-    "backpack-core": "^0.8.3",
-    "cross-env": "^5.2.0",
-    "mongodb": "^3.2.7"
+    "backpack-core": "^0.8.4",
+    "cross-env": "^7.0.2",
+    "mongodb": "^3.5.9"
   }
 }

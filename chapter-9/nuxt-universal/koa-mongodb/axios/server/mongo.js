@@ -16,7 +16,10 @@ export default class Mongo {
   async connect () {
     // Use connect method to connect to the Server.
     // https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-deprecated-warning-by-setting-usenewurlpars
-    this.connection = await MongoClient.connect(config.url, { useNewUrlParser: true })
+    this.connection = await MongoClient.connect(config.url, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    })
     return this.connection.db(config.dbname)
   }
 
