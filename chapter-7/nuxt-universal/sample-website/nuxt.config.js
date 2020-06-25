@@ -1,16 +1,21 @@
 const pkg = require('./package')
 
 module.exports = {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
-  // https://nuxtjs.org/api/configuration-router#linkactiveclass
-  router: {
-    // linkActiveClass: 'current'
-  },
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
 
   /*
   ** Headers of the page
-  * https://github.com/nuxt/vue-meta
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: 'LAU TIAM KOK | PORTFOLIO',
@@ -62,6 +67,12 @@ module.exports = {
     '~/plugins/client-only/aos.client.js', // only in client side
     '~/plugins/vee-validate',
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
 
   /*
   ** Nuxt.js modules

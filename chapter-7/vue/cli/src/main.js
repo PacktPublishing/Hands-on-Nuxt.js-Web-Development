@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './vee-validate'
+import './plugins/vee-validate'
 
 Vue.config.productionTip = false;
 
