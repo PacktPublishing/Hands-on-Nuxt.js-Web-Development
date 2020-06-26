@@ -22,7 +22,7 @@ export default {
       divide = this.$divide(8, 2)
     }
     return {
-      divide: divide,
+      divide,
       message: 'welcome'
     }
   },
@@ -35,7 +35,7 @@ export default {
       subtract = context.app.$subtract(10, 4)
     }
     return {
-      subtract: subtract,
+      subtract,
     }
   },
   // client-server hook.

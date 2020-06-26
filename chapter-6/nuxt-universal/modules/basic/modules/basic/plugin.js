@@ -8,8 +8,8 @@ var options = []
   options.push('option 2')
 <% } %>
 
-<% if (options.token === '123') { %>
-  options.push('token 123')
+<% if (options.language === 'ES') { %>
+  options.push('language ES')
 <% } %>
 
 const basic = function () {

@@ -1,5 +1,5 @@
 {
-  "name": "global-middleware",
+  "name": "nuxt-module",
   "version": "1.0.0",
   "description": "My ace Nuxt.js project",
   "author": "Lau Tiam kok",
@@ -8,13 +8,10 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
-    "nuxt": "^2.9.2"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nuxt": "^2.13.1"
   }
 }

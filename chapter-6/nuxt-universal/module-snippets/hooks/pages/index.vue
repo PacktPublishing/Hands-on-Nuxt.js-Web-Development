@@ -7,12 +7,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  //
-}
-</script>
-
 <style>
 .background {
    height: 100px;

@@ -13,15 +13,11 @@
 
 <script>
 export default {
-  async asyncData(context) {
-    const data = await context.$axios.$get('/api/users')
+  async asyncData({ $axios }) {
+    const users = await $axios.$get('/api/users')
     return {
-      users: data
+      users
     }
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>

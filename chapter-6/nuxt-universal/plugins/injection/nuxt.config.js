@@ -1,10 +1,21 @@
 import pkg from './package'
 
 export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
   /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+
+  /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: pkg.name,
@@ -39,6 +50,12 @@ export default {
     '~/plugins/name-conventions/divide.client.js', // only in client side
     '~/plugins/name-conventions/subtract.server.js', // only in server side
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
 
   /*
   ** Nuxt.js modules

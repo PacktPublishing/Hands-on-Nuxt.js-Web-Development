@@ -33,7 +33,7 @@ export default {
 
     // Add an instance property.
     // https://codegolf.stackexchange.com/questions/146544/hello-world-in-multiple-languages
-    Vue.prototype.$message = 'こんにちは世界！' // Hello World in Japanese.
+    Vue.prototype.$message = 'Helló Világ!' // Hello World in Hungarian.
   }
 }
 

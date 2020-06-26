@@ -13,10 +13,10 @@
 
 <script>
 export default {
-  async asyncData(context) {
-    const getUsers = await context.app.$getUsers()
+  async asyncData({ app }) {
+    const { data: users } = await app.$getUsers()
     return {
-      users: getUsers.data
+      users
     }
   },
   async mounted () {
@@ -25,7 +25,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>

@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  async asyncData(context) {
-    const ip = await context.$axios.$get('http://icanhazip.com')
+  async asyncData({ $axios }) {
+    const ip = await $axios.$get('http://icanhazip.com')
     return {
       ip
     }

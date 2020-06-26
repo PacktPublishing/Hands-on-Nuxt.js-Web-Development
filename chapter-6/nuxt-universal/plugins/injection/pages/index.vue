@@ -4,11 +4,3 @@
     <p>Hello World!</p>
   </div>
 </template>
-
-<script>
-//
-</script>
-
-<style>
-/** empty */
-</style>

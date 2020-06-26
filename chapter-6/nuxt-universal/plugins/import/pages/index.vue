@@ -12,7 +12,7 @@
 export default {
   data () {
     let helloWorld = []
-    helloWorld.push(this.$message) // こんにちは世界！
+    helloWorld.push(this.$message) // Helló Világ!
 
     // Push another language.
     this.$message = 'Olá Mundo!'
@@ -24,7 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>

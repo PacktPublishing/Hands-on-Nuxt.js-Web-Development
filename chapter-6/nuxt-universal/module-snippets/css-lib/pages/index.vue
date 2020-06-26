@@ -4,12 +4,11 @@
     <p>Hello World!</p>
 
     <div>
-      <b-button size="sm" @click="toggle">
+      <b-button @click="toggle">
         {{ show ? 'Hide' : 'Show' }} Alert
       </b-button>
       <b-alert
         v-model="show"
-        class="mt-3"
         dismissible
         @dismissed="dismissed"
       >
@@ -29,23 +28,23 @@
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
-  data() {
+  data () {
     return {
       name: 'BootstrapVue',
       show: true
     }
   },
   watch: {
-    show(newVal) {
+    show (newVal) {
       console.log('Alert is now ' + (newVal ? 'visible' : 'hidden'))
     }
   },
   methods: {
-    toggle() {
+    toggle () {
       console.log('Toggle button clicked')
       this.show = !this.show
     },
-    dismissed() {
+    dismissed () {
       console.log('Dismiss button clicked')
     }
   }
