@@ -1,16 +1,15 @@
 'use strict'
 
 import Router from 'koa-router'
-import fetchUsers from './_routes'
-import fetchUser from './_routes/fetch-user'
+import local from './_routes/local'
 
 // Better with prefix
 // https://www.npmjs.com/package/koa-router#router-prefixes
 const router = new Router({
-  prefix: '/users'
+  prefix: '/login'
 })
 
-const routes = [fetchUsers, fetchUser]
+const routes = [local]
 for (var route of routes) {
   router.use(route.routes(), route.allowedMethods())
 }

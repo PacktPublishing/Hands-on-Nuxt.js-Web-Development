@@ -1,11 +1,22 @@
 const pkg = require('./package')
 
 
-module.exports = {
+export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
   /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+
+  /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: pkg.name,
@@ -45,6 +56,12 @@ module.exports = {
   ],
 
   /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
+
+  /*
   ** Nuxt.js modules
   */
   modules: [
@@ -57,7 +74,7 @@ module.exports = {
   },
 
   proxy: {
-    '/api/': { target: 'http://localhost:3030/', pathRewrite: {'^/api/': ''} },
+    '/api/': { target: 'http://localhost:4000/', pathRewrite: {'^/api/': ''} },
   },
 
   /*

@@ -1,14 +1,11 @@
 'use strict'
 
-import qs from 'qs'
 import axios from '~/plugins/axios-api'
-
 const cookies = process.client ? require('js-cookie') : undefined
 
 export default {
   async login({ commit }, { username, password }) {
-    console.log("axios.defaults.baseURL =", axios.defaults.baseURL)
-    const { data } = await axios.post('/public/users/login', qs.stringify({ username, password }))
+    const { data } = await axios.post('/public/login/local', { username, password })
 
     // If ok, axios.data should receive the following data format:
     // {"status":200,"data":{"username":"demo"}}

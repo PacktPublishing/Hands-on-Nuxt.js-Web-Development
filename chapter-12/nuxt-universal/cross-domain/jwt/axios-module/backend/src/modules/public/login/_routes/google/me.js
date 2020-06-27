@@ -111,7 +111,7 @@ router.get('/google/me', async (ctx, next) => {
   ctx.body = {
     user: payload,
     message: 'logged in ok',
-    token: token
+    token
   }
 })
 
