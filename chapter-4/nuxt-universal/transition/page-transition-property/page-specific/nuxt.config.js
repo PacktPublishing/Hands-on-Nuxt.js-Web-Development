@@ -1,8 +1,20 @@
 
 export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
+
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+
   /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: process.env.npm_package_name || '',
@@ -15,10 +27,12 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
   /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+
   /*
   ** Global CSS
   */
@@ -26,16 +40,25 @@ export default {
     // The CSS transition file.
     'assets/less/transitions.less'
   ],
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
+
   /*
   ** Nuxt.js modules
   */
   modules: [
   ],
+
   /*
   ** Build configuration
   */
@@ -46,6 +69,7 @@ export default {
     extend(config, ctx) {
     }
   },
+
   /*
   **  Global page transition
   */

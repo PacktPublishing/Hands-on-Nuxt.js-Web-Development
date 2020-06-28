@@ -1,12 +1,18 @@
 {
-  "name": "example-custom-loading",
-  "dependencies": {
-    "nuxt": "latest"
-  },
+  "name": "view",
+  "version": "1.0.0",
+  "description": "My super-excellent Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "post-update": "yarn upgrade --latest"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "nuxt": "^2.13.2"
   }
 }

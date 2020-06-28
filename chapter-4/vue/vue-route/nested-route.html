@@ -12,8 +12,8 @@
   <div id="app">
     <h1>Hello App!</h1>
     <p>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/users">Go to Users</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/users">Users</router-link>
     </p>
     <router-view></router-view>
   </div>
@@ -24,7 +24,7 @@
 
     // 1. Define route components.
     // These can be imported from other files
-    const Foo = { template: '<div>foo</div>' }
+    const About = { template: '<div>About</div>' }
     const Users = {
       template: `
         <div class="user">
@@ -45,7 +45,7 @@
     // `Vue.extend()`, or just a component options object.
     // We'll talk about nested routes later.
     const routes = [
-      { path: '/foo', component: Foo },
+      { path: '/about', component: About },
       {
         path: '/users',
         component: Users,

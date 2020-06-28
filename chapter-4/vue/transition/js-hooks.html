@@ -9,22 +9,22 @@
 </head>
 <body>
 
-  <div id="app">
-    <h1>Hello App!</h1>
-    <p>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
-    </p>
-    <transition
-      appear
-      v-bind:css="false"
-      v-on:before-enter="beforeEnter"
-      v-on:enter="enter"
-      v-on:leave="leave"
-      v-on:after-leave="afterLeave">
-      <router-view></router-view>
-    </transition>
-  </div>
+<div id="app">
+  <h1>Hello App!</h1>
+  <p>
+    <router-link to="/about">About</router-link>
+    <router-link to="/contact">Contact</router-link>
+  </p>
+  <transition
+    appear
+    v-bind:css="false"
+    v-on:before-enter="beforeEnter"
+    v-on:enter="enter"
+    v-on:leave="leave"
+    v-on:after-leave="afterLeave">
+    <router-view></router-view>
+  </transition>
+</div>
 
   <script type="text/javascript">
     // https://github.com/nuxt/vue-meta
@@ -34,26 +34,26 @@
 
     // 1. Define route components.
     // These can be imported from other files
-    const Foo = {
-      name: 'Foo',
-      template: '<div>foo</div>',
+    const About = {
+      name: 'about',
+      template: '<div>about</div>',
       metaInfo: {
         title: 'My Awesome Webapp',
         // override the parent template and just use the above title only
         titleTemplate: null,
         meta: [
-          { vmid: 'description', name: 'description', content: 'foo' }
+          { vmid: 'description', name: 'description', content: 'about' }
         ]
       }
     }
-    const Bar = {
-      name: 'Bar',
-      template: '<div>bar</div>',
+    const Contact = {
+      name: 'contact',
+      template: '<div>contact</div>',
       metaInfo: {
         // title will be injected into parent titleTemplate
-        title: 'Bar',
+        title: 'contact',
         meta: [
-          { vmid: 'description', name: 'description', content: 'bar' }
+          { vmid: 'description', name: 'description', content: 'contact' }
         ]
       }
     }
@@ -64,8 +64,8 @@
     // `Vue.extend()`, or just a component options object.
     // We'll talk about nested routes later.
     const routes = [
-      { path: '/foo', component: Foo },
-      { path: '/bar', component: Bar }
+      { path: '/about', component: About },
+      { path: '/contact', component: Contact }
     ]
 
     // 3. Create the router instance and pass the `routes` option

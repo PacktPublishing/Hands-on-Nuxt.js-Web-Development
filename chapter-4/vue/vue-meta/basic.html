@@ -11,8 +11,8 @@
   <div id="app">
     <h1>Hello App!</h1>
     <p>
-      <router-link to="/foo">Go to Foo</router-link>
-      <router-link to="/bar">Go to Bar</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/contact">Contact</router-link>
     </p>
     <router-view></router-view>
   </div>
@@ -25,26 +25,26 @@
 
     // 1. Define route components.
     // These can be imported from other files
-    const Foo = {
-      name: 'Foo',
-      template: '<div>foo</div>',
+    const About = {
+      name: 'about',
+      template: '<div>About</div>',
       metaInfo: {
-        title: 'My Awesome Webapp',
+        title: 'About',
         // override the parent template and just use the above title only
         titleTemplate: null,
         meta: [
-          { vmid: 'foo', name: 'foo', content: 'something about foo...' }
+          { vmid: 'about', name: 'about', content: 'Meta content for about...' }
         ]
       }
     }
-    const Bar = {
-      name: 'Bar',
-      template: '<div>bar</div>',
+    const Contact = {
+      name: 'contact',
+      template: '<div>Contact</div>',
       metaInfo: {
         // title will be injected into parent titleTemplate
-        title: 'Bar',
+        title: 'Contact',
         meta: [
-          { vmid: 'bar', name: 'bar', content: 'something about bar...' }
+          { vmid: 'contact', name: 'contact', content: 'Meta content for contact...' }
         ]
       }
     }
@@ -55,8 +55,8 @@
     // `Vue.extend()`, or just a component options object.
     // We'll talk about nested routes later.
     const routes = [
-      { path: '/foo', component: Foo },
-      { path: '/bar', component: Bar }
+      { path: '/about', component: About },
+      { path: '/contact', component: Contact }
     ]
 
     // 3. Create the router instance and pass the `routes` option
@@ -79,7 +79,7 @@
         meta: [
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-          { vmid: 'default', name: 'default', content: 'something about default...' }
+          { vmid: 'default', name: 'default', content: 'Meta content for default page...' }
         ]
       },
       router

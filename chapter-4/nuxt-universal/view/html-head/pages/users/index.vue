@@ -24,6 +24,15 @@ export default {
         message: e.message
       })
     }
+  },
+
+  head () {
+    return {
+      title: 'Users',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Meta content for users...' }
+      ]
+    }
   }
 }
 </script>

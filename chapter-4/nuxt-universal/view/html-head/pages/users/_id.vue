@@ -28,6 +28,15 @@ export default {
         message: 'User not found'
       })
     }
+  },
+
+  head () {
+    return {
+      title: this.user.name,
+      meta: [
+        { hid: this.user.id, name: this.user.name, content: this.user.website }
+      ]
+    }
   }
 }
 </script>

@@ -20,7 +20,7 @@ export default {
       // Disable template.
       // titleTemplate: null,
       meta: [
-        { hid: 'description', name: 'description', content: 'My custom description' }
+        { hid: 'description', name: 'description', content: 'Meta content for home...' }
       ]
     }
   }

@@ -107,9 +107,9 @@
 </template>
 
 <script>
-import Logo from '~/components/logo.vue'
-import Copyright from '~/components/copyright.vue'
-
+// Skip importing if components: true is set in nuxt.config.js
+// import Logo from '~/components/logo.vue'
+// import Copyright from '~/components/copyright.vue'
 
 // Dummy nav.
 const nav = [
@@ -172,10 +172,10 @@ export default {
     }
   },
 
-  components: {
-    Logo,
-    Copyright
-  },
+  // components: {
+  //   Logo,
+  //   Copyright
+  // },
 
   mounted () {
     // Detect ZF sceen size on resize.
