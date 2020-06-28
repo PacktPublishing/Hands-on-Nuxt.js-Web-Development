@@ -8,13 +8,11 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
-    "nuxt": "^2.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.9"
+    "jquery": "^3.5.1",
+    "nuxt": "^2.13.2"
   }
 }

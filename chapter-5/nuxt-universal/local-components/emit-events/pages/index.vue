@@ -21,8 +21,9 @@
 </template>
 
 <script>
-import TodoItem from '~/components/todo-item.vue'
-import InputText from '~/components/input-text.vue'
+// Skip importing if components:true is set in nuxt.config.js
+// import TodoItem from '~/components/todo-item.vue'
+// import InputText from '~/components/input-text.vue'
 
 export default {
   data () {
@@ -36,10 +37,10 @@ export default {
       nextTodoId: 3
     }
   },
-  components: {
-    TodoItem,
-    InputText
-  },
+  // components: {
+  //   TodoItem,
+  //   InputText
+  // },
   methods: {
     handleCompleted (todo) {
       alert(todo.text + ' - Task Done')

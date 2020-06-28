@@ -38,7 +38,9 @@
 
 <script>
 import $ from 'jquery'
-import PostItem from '~/components/work/post-item.vue'
+
+// Skip importing the component if components: true is set in nuxt.config.js
+// import PostItem from '~/components/work/post-item.vue'
 
 const post = {
   id: 3,
@@ -91,9 +93,9 @@ const post = {
 }
 
 export default {
-  components: {
-    PostItem
-  },
+  // components: {
+  //   PostItem
+  // },
 
   asyncData() {
     return new Promise((resolve) => {

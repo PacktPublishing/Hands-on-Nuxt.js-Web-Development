@@ -113,10 +113,14 @@
 </template>
 
 <script>
-import Logo from '~/components/logo.vue'
-import Copyright from '~/components/copyright.vue'
-import Nav from '~/components/nav.vue'
-import Social from '~/components/social.vue'
+// No need to import component manually if set components: true in nuxt.config.js
+// For more information:
+// https://github.com/nuxt/components
+// https://nuxtjs.org/api/configuration-components
+// import Logo from '~/components/logo.vue'
+// import Copyright from '~/components/copyright.vue'
+// import Nav from '~/components/nav.vue'
+// import Social from '~/components/social.vue'
 
 // Dummy nav.
 const nav = [
@@ -172,22 +176,26 @@ const social = [
 ]
 
 export default {
-  components: {
-    Logo,
-    Copyright,
-    Nav,
-    Social
-  },
+  // No need to import component manually if set components: true in nuxt.config.js
+  // For more information:
+  // https://github.com/nuxt/components
+  // https://nuxtjs.org/api/configuration-components
+  // components: {
+  //   Logo,
+  //   Copyright,
+  //   Nav,
+  //   Social
+  // },
 
-  data() {
+  data () {
     return {
       copyright: '&copy; Lau Tiam Kok',
-      nav: nav,
-      social: social
+      nav,
+      social
     }
   },
 
-  mounted() {
+  mounted () {
     // Detect ZF sceen size on resize.
     this.$getCurrentScreenSize()
   },
