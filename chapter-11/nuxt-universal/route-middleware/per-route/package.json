@@ -8,24 +8,22 @@
     "dev": "backpack",
     "build": "nuxt build && backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "consola": "^2.5.8",
-    "cookie": "^0.4.0",
-    "cross-env": "^5.2.0",
+    "axios": "^0.19.2",
+    "backpack-core": "^0.8.4",
+    "consola": "^2.14.0",
+    "cookie": "^0.4.1",
+    "cross-env": "^7.0.2",
     "jsonwebtoken": "^8.5.1",
-    "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1",
-    "koa-favicon": "^2.0.1",
-    "koa-router": "^7.4.0",
-    "koa-session": "^5.11.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-favicon": "^2.1.0",
+    "koa-router": "^9.0.1",
+    "koa-session": "^6.0.0",
     "koa-static": "^5.0.0",
-    "nuxt": "^2.11.0"
-  },
-  "devDependencies": {
-    "backpack-core": "^0.8.3",
-    "nodemon": "^1.18.9"
+    "nuxt": "^2.13.2"
   }
 }

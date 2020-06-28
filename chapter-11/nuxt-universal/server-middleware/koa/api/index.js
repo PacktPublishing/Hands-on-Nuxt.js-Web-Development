@@ -43,14 +43,14 @@ router.get('/', async (ctx, next) => {
   console.log('koa:sess =', ctx.headers.cookie && ctx.headers.cookie.indexOf('koa:sess') > -1)
 
   let cookieParsed = null
-  let authUser = null
+  let auth = null
   if (ctx.headers.cookie && ctx.headers.cookie.indexOf('koa:sess') > -1) {
     cookieParsed = cookie.parse(ctx.headers.cookie)['koa:sess']
     console.log('cookieParsed =', cookieParsed)
   }
   if (cookieParsed) {
-    authUser = JSON.parse(Buffer.from(cookieParsed, 'base64')).authUser
-    console.log('authUser =', authUser)
+    auth = JSON.parse(Buffer.from(cookieParsed, 'base64')).auth
+    console.log('auth =', auth)
   }
 
   ctx.type = 'json'
@@ -64,7 +64,7 @@ router.post('/login', async (ctx, next) => {
   // Get the parsed data.
   let request = ctx.request.body || {}
   if (request.username === 'demo' && request.password === 'demo') {
-    ctx.session.authUser = { username: 'demo' }
+    ctx.session.auth = { username: 'demo' }
     ctx.body = {
       username: 'demo'
     }
@@ -81,8 +81,8 @@ router.post('/logout', async (ctx, next) => {
 
 // Get login session GET - /api/session
 router.get('/session', async (ctx, next) => {
-  if (ctx.session && ctx.session.authUser) {
-    ctx.body = ctx.session.authUser
+  if (ctx.session && ctx.session.auth) {
+    ctx.body = ctx.session.auth
   } else {
     ctx.throw(403, 'No session')
   }

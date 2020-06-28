@@ -53,7 +53,7 @@ app.get('/session-counter', (req, res) => {
 
 // middleware function to check for logged-in users
 var authenticate = (req, res, next) => {
-  if (req.session.authUser && req.cookies.express_sid) {
+  if (req.session.auth && req.cookies.express_sid) {
     next()
   } else {
     res.status(401).json({ message: 'Not authorized' })
@@ -63,7 +63,7 @@ var authenticate = (req, res, next) => {
 // Add POST - /api/login
 app.post('/login', (req, res) => {
   if (req.body.username === 'demo' && req.body.password === 'demo') {
-    req.session.authUser = { username: 'demo' }
+    req.session.auth = { username: 'demo' }
     return res.json({ username: 'demo' })
   }
   res.status(401).json({ message: 'Bad credentials' })
@@ -71,7 +71,7 @@ app.post('/login', (req, res) => {
 
 // Add POST - /api/logout
 app.post('/logout', (req, res) => {
-  delete req.session.authUser
+  delete req.session.auth
   res.json({ ok: true })
 })
 

@@ -1,14 +1,21 @@
 import pkg from './package'
 
 export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
-  router: {
-    middleware: ['visits', 'user-agent']
-  },
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
 
   /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: pkg.name,
@@ -40,6 +47,12 @@ export default {
   ],
 
   /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
+
+  /*
   ** Nuxt.js modules
   */
   modules: [
@@ -54,5 +67,9 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+
+  router: {
+    middleware: ['visits', 'user-agent']
+  },
 }

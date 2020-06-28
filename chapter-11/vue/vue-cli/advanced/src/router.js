@@ -12,6 +12,12 @@ import log from './middlewares/log'
 // https://github.com/vuejs/vue-router
 Vue.use(VueRouter)
 
+// A quick fix for "vueRouter:Avoided redundant navigation to current location".
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 // Create the router.
 const router = new VueRouter({
   // mode: 'history',

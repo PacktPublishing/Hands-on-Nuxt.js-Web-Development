@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Please login to see the secret content</h1>
-    <form v-if="!$store.state.authUser" @submit.prevent="login">
+    <form v-if="!$store.state.auth" @submit.prevent="login">
       <p v-if="error" class="error">
         {{ error }}
       </p>
@@ -13,7 +13,7 @@
       </button>
     </form>
     <div v-else>
-      Hello {{ $store.state.authUser.username }}!
+      Hello {{ $store.state.auth.username }}!
       <pre>I am the secret content, I am shown only when the user is connected.</pre>
       <p><i>You can also refresh this page, you'll still be connected!</i></p>
       <button @click="logout">

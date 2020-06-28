@@ -12,7 +12,7 @@ export default (to, from, next) => {
   //     path: '/login'
   //   })
   // } else {
-  //   console.log('is adult ok!')
+  //   console.log('is secret ok!')
   //   next()
   // }
 
@@ -28,7 +28,7 @@ export default (to, from, next) => {
     // })
   } else {
     // eslint-disable-next-line
-    console.log('is adult ok!')
+    console.log('is secret ok!')
     next()
   }
 }

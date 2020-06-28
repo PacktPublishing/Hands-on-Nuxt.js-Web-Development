@@ -23,7 +23,7 @@
       </button>
     </div>
     <p>
-      <router-link to="/adult">Adult page</router-link>
+      <router-link to="/secret">secret page</router-link>
     </p>
   </div>
 </template>

@@ -1,9 +1,10 @@
 'use strict'
 
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.js'
 import VueRouter from 'vue-router'
 
 import Routes from './routes'
+import log from './middlewares/log'
 
 // Install router plugins.
 // This installs <router-view> and <router-link>,
@@ -24,15 +25,14 @@ const router = new VueRouter({
   routes: Routes
 })
 
+router.beforeEach(log)
+
 // Handle errors.
 // https://router.vuejs.org/api/#router-onerror
 // https://router.vuejs.org/guide/advanced/navigation-guards.html#global-before-guards
 router.onError(err => {
-  // eslint-disable-next-line
   console.error('Handling this error: ', err.message)
-  // eslint-disable-next-line
   console.log(err.statusCode)
-
   alert(err.message)
   router.push({ name: 'login' })
 })

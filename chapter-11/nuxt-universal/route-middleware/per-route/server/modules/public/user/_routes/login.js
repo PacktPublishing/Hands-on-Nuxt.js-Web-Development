@@ -6,13 +6,6 @@ import config from '../../../../config'
 
 const router = new Router()
 
-// Dummy users.
-const users = [
-  { name: 'Alexandre' },
-  { name: 'Pooya' },
-  { name: 'Sébastien' },
-]
-
 // Add POST - /api/public/users/login
 // You can login with:
 // curl -X POST -H "Content-Type: application/json" --data '{"username":"thedude", "password":"abides"}' http://localhost:9000/public/users/login

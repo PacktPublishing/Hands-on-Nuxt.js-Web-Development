@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li><router-link to="/">/</router-link></li>
-      <li><router-link to="/adult">/adult</router-link></li>
+      <li><router-link to="/secret">/secret</router-link></li>
     </ul>
     <router-view class="view"></router-view>
   </div>
