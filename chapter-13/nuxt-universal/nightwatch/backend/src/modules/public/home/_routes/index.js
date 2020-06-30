@@ -1,45 +1,29 @@
 'use strict'
 
 import Router from 'koa-router'
-// import cookie from 'cookie'
+import jsdom from 'jsdom'
 
+const { JSDOM } = jsdom
 const router = new Router()
 
-const middleware3 = async (ctx, next) => {
-  console.log('Time started at: ', Date.now())
-  await next()
-}
+// Some hard coded html.
+const html = '<!DOCTYPE html><p>Hello world</p>'
 
-const middleware1 = async (ctx, next) => {
-  console.log('I am the first. ')
-  await next()
-  console.log('I am the last. ')
-}
+// Get the dom by calling the jsdom constructor, and giving it the html.
+const dom = new JSDOM(html)
 
-const middleware2 = async (ctx, next) => {
-  console.log('I am the second. ')
-  await next()
-  console.log('I am the third. ')
-}
+// Get the window object.
+const window = dom.window
 
 // Display hello world.
-router.get('/', middleware1, middleware2, middleware3, async (ctx, next) => {
-  // ctx.session = null
-  // console.log("session", ctx.session)
-  // console.log(ctx.headers)
-  // console.log(ctx.headers.cookie)
-  // console.log((ctx.headers.cookie && ctx.headers.cookie.indexOf('koa:sess') > -1))
+router.get('/', async (ctx, next) => {
 
-  // if (ctx.headers.cookie && ctx.headers.cookie.indexOf('koa:sess') > -1) {
-  //   ctx.cookie = cookie.parse(ctx.headers.cookie)['koa:sess']
-  //   console.log(ctx.cookie)
-  //   ctx.authUser = JSON.parse(Buffer.from(ctx.cookie, 'base64')).authUser
-  //   console.log(ctx.authUser)
-  // }
+  // Now just do whatever, just like in the browser.
+  const text = window.document.querySelector("p").textContent
 
   ctx.type = 'json'
   ctx.body = {
-    message: 'Hello World!'
+    message: text // Hello World
   }
 })
 

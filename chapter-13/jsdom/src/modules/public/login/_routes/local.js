@@ -39,7 +39,7 @@ router.post('/local', async (ctx, next) => {
 
   try {
     users = await pool.query('SELECT * FROM `users` WHERE username = ?', [username])
-  } catch(err) {
+  } catch (err) {
     ctx.throw(400, err.sqlMessage)
   }
 

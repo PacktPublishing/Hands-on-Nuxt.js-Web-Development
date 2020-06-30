@@ -2,6 +2,6 @@
 
 export default class Greeter {
   static greet () {
-    return `hello world`
+    return 'hello world'
   }
 }

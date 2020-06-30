@@ -11,10 +11,10 @@ import mysql from 'mysql'
 // https://en.wikipedia.org/wiki/Connection_pool
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host     : 'localhost',
-  user     : 'root',
-  password : 'tklau',
-  database : 'nuxt-auth'
+  host: 'localhost',
+  user: 'root',
+  password: 'tklau',
+  database: 'nuxt-auth'
 })
 
 // Ping database to check for common exception errors.
@@ -36,7 +36,6 @@ pool.getConnection((err, connection) => {
   if (connection) {
     connection.release()
   }
-  return
 })
 
 // Refactoring MySQL to Node.js 8’s Async/Await/ Promisify for Node.js async/await.

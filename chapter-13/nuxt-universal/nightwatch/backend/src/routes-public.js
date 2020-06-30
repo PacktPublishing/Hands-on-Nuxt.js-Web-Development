@@ -6,11 +6,12 @@ import Router from 'koa-router'
 import home from './modules/public/home'
 import user from './modules/public/user'
 import login from './modules/public/login'
+import movie from './modules/public/movie'
 
 const router = new Router({ prefix: '/public' })
 
 // https://stackoverflow.com/questions/30285683/how-can-i-split-my-koa-routes-into-separate-files
-const modules = [home, user, login]
+const modules = [home, user, login, movie]
 for (var module of modules) {
   router.use(module.routes(), module.allowedMethods())
 }

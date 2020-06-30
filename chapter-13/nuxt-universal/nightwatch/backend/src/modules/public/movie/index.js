@@ -5,7 +5,9 @@ import index from './_routes'
 
 // Better with prefix
 // https://www.npmjs.com/package/koa-router#router-prefixes
-const router = new Router()
+const router = new Router({
+  prefix: '/movies'
+})
 
 const routes = [index]
 
