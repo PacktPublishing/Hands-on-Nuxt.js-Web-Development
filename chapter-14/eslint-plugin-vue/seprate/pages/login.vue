@@ -71,14 +71,15 @@ export default {
   },
   async mounted () {
     // Handle query when google sends back bunch of stuff.
-    let query = window.location.search
+    const href = window.location.href
+    const query = window.location.search
 
     // Log in the server with google code.
     if (query) {
       try {
         await this.$store.dispatch('loginWithGoogle', query)
       } catch (error) {
-        let errorData = error.response.data
+        const errorData = error.response.data
         this.formError = errorData.message
       }
     }
@@ -86,10 +87,10 @@ export default {
     // Remove query string value from address bar.
     // https://stackoverflow.com/a/54998973/413225
     // https://stackoverflow.com/a/22753103/413225
-    let uri = window.location.toString()
+    const uri = window.location.toString()
     if (uri.indexOf('?') > 0) {
-      let cleanUri = uri.substring(0, uri.indexOf('?'))
-      window.history.replaceState({}, document.title, cleanUri)
+      const clean_uri = uri.substring(0, uri.indexOf('?'))
+      window.history.replaceState({}, document.title, clean_uri)
     }
   },
   methods: {
@@ -103,7 +104,7 @@ export default {
         this.formPassword = ''
         this.formError = null
       } catch (error) {
-        let errorData = error.response.data
+        const errorData = error.response.data
         this.formError = errorData.message
       }
     },
@@ -111,7 +112,7 @@ export default {
       try {
         await this.$store.dispatch('getGoogleUrl')
       } catch (error) {
-        let errorData = error.response.data
+        const errorData = error.response.data
         this.formError = errorData.message
       }
     },
@@ -119,7 +120,7 @@ export default {
       try {
         await this.$store.dispatch('logout')
       } catch (error) {
-        let errorData = error.response.data
+        const errorData = error.response.data
         this.formError = errorData.message
       }
     }

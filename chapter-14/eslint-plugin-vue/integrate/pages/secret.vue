@@ -29,7 +29,7 @@ export default {
     try {
       const { data } = await $axios.$get('/api/private')
       return {
-        greeting: data.message
+        greeting: data.message,
       }
     } catch (error) {
       if (process.browser) {
@@ -38,6 +38,6 @@ export default {
       return redirect('/login')
     }
   },
-  middleware: ['auth', 'token']
+  middleware: ['auth', 'token'],
 }
 </script>

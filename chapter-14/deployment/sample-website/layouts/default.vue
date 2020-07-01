@@ -107,19 +107,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
-import 'what-input'
-import '~/plugins/jquery-ui-bundle'
-import Logo from '~/components/logo.vue'
-import Copyright from '~/components/copyright.vue'
-
-if (process.client) {
-  var Foundation = require("foundation-sites")
-}
-
-if (process.client) {
-  var MotionUI = require("motion-ui")
-}
+// Skip importing if components: true is set in nuxt.config.js
+// import Logo from '~/components/logo.vue'
+// import Copyright from '~/components/copyright.vue'
 
 // Dummy nav.
 const nav = [
@@ -175,54 +165,21 @@ const social = [
 ]
 
 export default {
-  data() {
+  data () {
     return {
       nav: nav,
       social: social
     }
   },
-  components: {
-    Logo,
-    Copyright
-  },
-  watch: {
-    // Watch route changes.
-    // https://stackoverflow.com/questions/46402809/vuejs-event-on-route-change
-    $route(to, from) {
-      // console.log(from)
-      // console.log(to)
-      // DOM not updated yet.
-      this.$nextTick(function () {
-        // DOM updated.
-        this.setCurrentClass()
-      })
-    },
-    // Or:
-    // '$route': function (newRoute) {
-    //   console.log(newRoute)
-    // }
-  },
-  mounted() {
-    $(document).foundation()
 
-    // Nuxt set the active class to a tag but we want to set it to li tag
-    // so use jQuery to set it for us.
-    this.setCurrentClass()
+  // components: {
+  //   Logo,
+  //   Copyright
+  // },
 
+  mounted () {
     // Detect ZF sceen size on resize.
-    window.addEventListener('resize', () => {
-      var current = this.getFoundationCurrentMediaQuery()
-      console.log('Screen size: ' + current)
-    })
-  },
-  methods: {
-    setCurrentClass() {
-      var $active = $('.nuxt-link-exact-active')
-      var $target = $active.parent()
-      var $context = $target.parents('.row')
-      $('li', $context).removeClass('current')
-      $target.addClass('current')
-    }
+    this.$getCurrentScreenSize()
   },
 }
 </script>

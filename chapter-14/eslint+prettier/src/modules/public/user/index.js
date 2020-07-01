@@ -7,7 +7,7 @@ import fetchUser from './_routes/fetch-user'
 // Better with prefix
 // https://www.npmjs.com/package/koa-router#router-prefixes
 const router = new Router({
-  prefix: '/users'
+  prefix: '/users',
 })
 
 const routes = [fetchUsers, fetchUser]

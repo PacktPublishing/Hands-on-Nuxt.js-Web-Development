@@ -23,7 +23,7 @@ export default {
       name: '',
       username: '',
       password: '',
-      email: ''
+      email: '',
     }
   },
   mounted () {
@@ -31,15 +31,15 @@ export default {
     var object = localStorage.getItem('user')
     var user = JSON.parse(object)
     if (user) {
-      this.name = user.name.givenName + user.name.familyName
-      this.email = user.emails[0].value
+      this.name = user.names[0].givenName + user.names[0].familyName
+      this.email = user.emailAddresses[0].value
     }
 
     // Remove the localStorage item after signup.
     // localStorage.removeItem('user')
     // Or, clear all items.
     // localStorage.clear()
-  }
+  },
 }
 </script>
 

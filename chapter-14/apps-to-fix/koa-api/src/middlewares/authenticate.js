@@ -14,7 +14,7 @@ export default async (ctx, next) => {
   try {
     ctx.state.jwtPayload = jwt.verify(token, config.JWT_SECRET)
   } catch (err) {
-    if (err.name === 'TokenExpiredError'){
+    if (err.name === 'TokenExpiredError') {
       ctx.throw(401, err.message)
     }
     ctx.throw(403, err.message)

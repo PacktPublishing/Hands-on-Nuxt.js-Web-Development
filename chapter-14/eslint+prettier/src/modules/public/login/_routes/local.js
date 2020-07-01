@@ -2,7 +2,7 @@
 
 import Router from 'koa-router'
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import pool from 'core/database/mysql'
 import config from 'config'
 
@@ -14,7 +14,7 @@ const router = new Router()
 // curl -X POST -d "username=demo&password=123123" -H "Content-Type: application/x-www-form-urlencoded" http://localhost:3030/public/login/local
 router.post('/local', async (ctx, next) => {
   // Get the parsed data.
-  let request = ctx.request.body || {}
+  const request = ctx.request.body || {}
 
   // Throw the error.
   // 403 = Forbidden
@@ -33,13 +33,13 @@ router.post('/local', async (ctx, next) => {
     ctx.throw(400, 'password is required.')
   }
 
-  let username = request.username
-  let password = request.password
+  const username = request.username
+  const password = request.password
   let users = []
 
   try {
     users = await pool.query('SELECT * FROM `users` WHERE username = ?', [
-      username
+      username,
     ])
   } catch (err) {
     ctx.throw(400, err.sqlMessage)
@@ -48,11 +48,11 @@ router.post('/local', async (ctx, next) => {
   if (users.length === 0) {
     ctx.throw(404, 'no user found')
   }
-  let user = users[0]
+  const user = users[0]
   let match = false
 
   try {
-    match = await bcrypt.compare(password, user.password)
+    match = await bcrypt.compareSync(password, user.password)
   } catch (err) {
     ctx.throw(401, err)
   }
@@ -61,16 +61,16 @@ router.post('/local', async (ctx, next) => {
   }
 
   // Define payload.
-  let payload = { name: user.name, email: user.email }
+  const payload = { name: user.name, email: user.email }
   // Signing a token with 1 min of expiration.
   // 1 minute => 60
   // 5 minutes => 60 * 5
-  let token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: 1 * 60 })
+  const token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: 1 * 60 })
 
   ctx.body = {
     user: payload,
     message: 'logged in ok',
-    token: token
+    token: token,
   }
 })
 

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1 class="red">
-      Home page
-    </h1>
+    <h1>Home page</h1>
     <p>Hello World!</p>
   </div>
 </template>
@@ -14,7 +12,5 @@ export default {
 </script>
 
 <style>
-.red {
-  color: red;
-}
+/** empty */
 </style>

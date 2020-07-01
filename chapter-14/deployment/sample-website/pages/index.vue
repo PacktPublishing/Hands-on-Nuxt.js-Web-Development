@@ -18,7 +18,7 @@
                 <template v-for="image in post.images">
 
                   <div class="swiper-slide">
-                    <nuxt-link :to="image.link"><img :src="requireImage(image.src)" :alt="image.alt"></nuxt-link>
+                    <nuxt-link :to="image.link"><img :src="$loadAssetImage(image.src)" :alt="image.alt"></nuxt-link>
                   </div>
 
                 </template>
@@ -55,7 +55,6 @@
 <script>
 import $ from 'jquery'
 import Swiper from 'swiper'
-import AOS from 'aos'
 
 const post = {
   id: 1,
@@ -105,17 +104,20 @@ export default {
       }, 1000)
     })
   },
+
   data () {
     return {
       post: post
     }
   },
+
   head () {
     return {
       // Disable template.
       titleTemplate: null
     }
   },
+
   mounted () {
     // Fade in the swiper arrow buttons.
     $('.row-swiper, .row-swiper-article').hover(function () {
@@ -149,16 +151,6 @@ export default {
       },
       autoHeight: true
     })
-
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
   }
 }
 </script>
-
-<style lang="less">
-/** empty */
-</style>

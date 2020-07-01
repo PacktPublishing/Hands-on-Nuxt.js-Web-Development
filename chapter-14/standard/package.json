@@ -12,22 +12,20 @@
     "jss-fix": "standard --fix"
   },
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "bcrypt": "^3.0.6",
-    "cookie": "^0.4.0",
-    "googleapis": "^40.0.0",
+    "backpack-core": "^0.8.4",
+    "bcryptjs": "^2.4.3",
+    "cross-env": "^7.0.2",
+    "googleapis": "^52.1.0",
     "jsonwebtoken": "^8.5.1",
-    "koa": "^2.6.2",
-    "koa-bodyparser": "^4.2.1",
-    "koa-favicon": "^2.0.1",
-    "koa-router": "^7.4.0",
-    "koa-session": "^5.11.0",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-favicon": "^2.1.0",
+    "koa-router": "^9.0.1",
     "koa-static": "^5.0.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "backpack-core": "^0.8.3",
-    "standard": "^12.0.1"
+    "standard": "^14.3.4"
   },
   "standard": {
     "ignore": [

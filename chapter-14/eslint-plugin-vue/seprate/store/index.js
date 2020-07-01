@@ -11,7 +11,7 @@ export const actions = {
       req.headers.cookie &&
       req.headers.cookie.indexOf('auth') > -1
     ) {
-      let auth = cookie.parse(req.headers.cookie)['auth']
+      const auth = cookie.parse(req.headers.cookie).auth
       // console.log('auth =', JSON.parse(auth))
       commit('setAuth', JSON.parse(auth))
     }

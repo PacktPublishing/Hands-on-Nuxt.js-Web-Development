@@ -28,8 +28,8 @@
               <!-- <nuxt-link :to="item.link" target="_blank"> -->
 
               <div class="container-card" v-on:click="triggerLink($event)" data-aos="fade-up">
-                <div class="card card-work image-background flex-centre" v-bind:style="{'background-image': 'url(' + requireImage(post.thumbnail.src) + ')' }">
-                  <img :src="requireImage(post.thumbnail.src)" :alt="post.thumbnail.alt">
+                <div class="card card-work image-background flex-centre" v-bind:style="{'background-image': 'url(' + $loadAssetImage(post.thumbnail.src) + ')' }">
+                  <img :src="$loadAssetImage(post.thumbnail.src)" :alt="post.thumbnail.alt">
                   <div class="layer"></div>
                   <div class="flex-centre-vh">
                     <p class="card-excerpt">{{ post.excerpt }}</p>
@@ -58,7 +58,6 @@
 
 <script>
 import $ from 'jquery'
-import AOS from 'aos'
 
 const post = {
   id: 3,
@@ -118,31 +117,26 @@ export default {
       }, 1000)
     })
   },
+
   data () {
     return {
       post: post,
       posts: post.posts
     }
   },
+
   head () {
     return {
       title: this.post.title || 'all',
     }
   },
-  mounted () {
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
-  },
 
   // define methods under the `methods` object
   methods: {
-    // v-on:click="triggerLink('/work/' + post.slug, $event)"
     goTo(route, $event) {
       window.location.href = route
     },
+
     triggerLink($event) {
       var context = $($event.target).parents('.container-card')
       context.find('a')[0].click()

@@ -20,9 +20,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
-import AOS from 'aos'
-
 const post = {
   id: 3,
   slug: 'work-nested',
@@ -37,22 +34,13 @@ export default {
       post: post,
     }
   },
+
   head () {
     return {
       title: this.post.title || 'all',
     }
   },
+
   scrollToTop: false,
-  mounted () {
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
-  }
 }
 </script>
-
-<style lang="less">
-/** empty */
-</style>

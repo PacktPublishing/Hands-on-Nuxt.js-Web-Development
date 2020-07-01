@@ -11,7 +11,7 @@ export default async (ctx, next) => {
     ctx.type = 'json'
     ctx.body = {
       status: ctx.status,
-      message: err.message
+      message: err.message,
     }
 
     ctx.app.emit('error', err, ctx)

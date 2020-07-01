@@ -3,7 +3,7 @@ export default async ({ store, error, $axios }) => {
   if (!store.state.auth.token) {
     error({
       message: 'No JWT token',
-      statusCode: 403
+      statusCode: 403,
     })
   }
 

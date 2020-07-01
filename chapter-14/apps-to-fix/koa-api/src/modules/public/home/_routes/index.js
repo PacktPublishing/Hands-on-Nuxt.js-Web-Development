@@ -1,7 +1,7 @@
 'use strict'
 
 import Router from 'koa-router'
-import cookie from 'cookie'
+// import cookie from 'cookie'
 
 const router = new Router()
 
@@ -11,20 +11,19 @@ const middleware3 = async (ctx, next) => {
 }
 
 const middleware1 = async(ctx, next) => {
-  console.log("I am the first. ")
+  console.log('I am the first. ')
   await next()
-  console.log("I am the last. ")
+  console.log('I am the last. ')
 }
 
 const middleware2 = async(ctx, next) => {
-  console.log("I am the second. ")
+  console.log('I am the second. ')
   await next()
-  console.log("I am the third. ")
+  console.log('I am the third. ')
 }
 
 // Display hello world.
 router.get('/', middleware1, middleware2, middleware3, async (ctx, next) => {
-
   // ctx.session = null
   // console.log("session", ctx.session)
   // console.log(ctx.headers)

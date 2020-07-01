@@ -1,20 +1,15 @@
 <template>
   <div>
     <h1>About page</h1>
-    <p>{{ message }}</p>
+    <p>Something awesome!</p>
   </div>
 </template>
 
 <script>
 export default {
   async asyncData (context) {
-    return {
-      message: 'Something awesome!'
-    }
+    console.log('context.$axios.defaults.baseURL =', context.$axios.defaults.baseURL)
+    const result = await context.$axios.$get('/')
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>

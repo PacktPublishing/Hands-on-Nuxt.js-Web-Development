@@ -1,7 +1,6 @@
 'use strict'
 
 import Router from 'koa-router'
-import authenticate from 'middlewares/authenticate'
 
 const router = new Router()
 

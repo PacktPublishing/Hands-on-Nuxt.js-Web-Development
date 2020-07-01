@@ -2,7 +2,6 @@
   <div>
     <h1 class="red">Home page</h1>
     <p>Hello World!</p>
-    </div>
   </div>
 </template>
 

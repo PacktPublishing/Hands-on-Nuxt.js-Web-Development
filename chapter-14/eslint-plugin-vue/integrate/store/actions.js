@@ -1,13 +1,13 @@
-'use strict'
-
 import queryString from 'query-string'
+;('use strict')
+
 const cookies = process.client ? require('js-cookie') : undefined
 
 export default {
   async login (context, { username, password }) {
     const { data } = await this.$axios.$post('/api/public/login/local', {
       username,
-      password
+      password,
     })
 
     // saving token in cookie for server rendering
@@ -17,7 +17,7 @@ export default {
     context.commit('setAuth', data)
   },
 
-  async getGoogleUrl (context) {
+  async getGoogleUrl(context) {
     // Redirect the route.
     // this.$router.push('/about')
 
@@ -32,8 +32,8 @@ export default {
     // Take the code only from the string.
     const { data } = await this.$axios.$get('/api/public/login/google/me', {
       params: {
-        code: parsed.code
-      }
+        code: parsed.code,
+      },
     })
 
     // Redirect if signup is required.
@@ -58,5 +58,5 @@ export default {
 
     // Remove data from the state.
     commit('setAuth', null)
-  }
+  },
 }

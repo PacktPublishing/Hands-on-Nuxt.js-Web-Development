@@ -1,11 +1,5 @@
 <template>
 
-  <transition
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:after-enter="afterEnter"
-    v-on:leave="leave">
-
   <!-- article -->
   <div class="row" v-if="post">
 
@@ -88,13 +82,9 @@
   </div>
   <!-- article -->
 
-  </transition>
 </template>
 
 <script>
-import $ from 'jquery'
-import AOS from 'aos'
-
 // Dummy posts.
 const posts = [
   {
@@ -237,8 +227,8 @@ const posts = [
 
 export default {
   name: 'slug',
-  // https://stackoverflow.com/questions/53569137/data-vs-asyncdata-in-nuxt-vue
-  asyncData ({app, params, error}) {
+
+  asyncData ({ app, params, error }) {
     // Use ES6 arrow function with find() to fetch the post.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     var result = posts.find(post => post.slug === params.slug)
@@ -255,6 +245,7 @@ export default {
       post: result
     }
   },
+
   data () {
     return {
       post: {
@@ -265,6 +256,7 @@ export default {
       description: 'description in data function.'
     }
   },
+
   // https://nuxtjs.org/api/pages-head
   head () {
     return {
@@ -275,83 +267,11 @@ export default {
       ]
     }
   },
-  // Does not seem to work in Nuxt.
-  // metaInfo () {
-  //   return {
-  //     title: this.post.title,
-  //     meta: [
-  //       { hid: 'description', name: 'description', content: this.item.text }
-  //     ]
-  //   }
-  // },
-  // methods: {
-  //   getpost (post) {
-  //     return post.slug === this.$route.params.slug
-  //   }
-  // },
-  mounted () {
-    // // You can pick the requested post after Vue has mounted but better with asyncData
-    // // in order to set meta info in the head function.
-    // var result = posts.find(post => post.slug === this.$route.params.slug)
-    // if(result === undefined) {
-    //   return this.$nuxt.error({ statusCode: 404, message: 'Post not found' })
-    // }
-    // this.post = result
 
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
-  },
-  // String:
-  // transition: 'test',
-  // Or as an Object:
-  // it’s also a good idea to explicitly add css: false for JavaScript-only transitions
-  // so that Vue can skip the CSS detection. This also prevents CSS rules from
-  // accidentally interfering with the transition.
-  // https://nuxtjs.org/api/pages-transition
-  transition: {
-    mode: 'out-in',
-    css: false,
-    beforeEnter (el) {
-      console.log('before in transition object')
-    },
-    enter (el, done) {
-      console.log('enter in transition object')
-      done()
-    },
-    afterEnter (el) {
-      console.log('after enter in transition object')
-    },
-    leave (el, done) {
-      console.log('leave in transition object')
-      done()
-    }
-  },
   methods: {
     getpost (post) {
       return post.slug === this.$route.params.slug
     },
-
-    // https://nuxtjs.org/api/pages-transition
-    // https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks
-    beforeEnter (el) {
-      console.log('before in methods object')
-    },
-    enter (el, done) {
-      console.log('enter in methods object')
-    },
-    afterEnter (el) {
-      console.log('after enter in transition object')
-    },
-    leave (el, done) {
-      console.log('leave in methods object')
-    },
   }
 }
 </script>
-
-<style scoped>
-/** empty */
-</style>

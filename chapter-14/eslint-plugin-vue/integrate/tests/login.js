@@ -15,5 +15,5 @@ module.exports = {
       .pause(1000)
       .assert.containsText('h2', 'Hello Alexandre!')
       .end()
-  }
+  },
 }

@@ -13,7 +13,7 @@ router.get('/', async (ctx, next) => {
   // ctx.body = 'Hello ' + ctx.state.user.name
   // If you are using jsonwebtoken:
   ctx.body = {
-    message: 'Hello ' + ctx.state.jwtPayload.name
+    message: 'Hello ' + ctx.state.jwtPayload.name,
   }
 })
 

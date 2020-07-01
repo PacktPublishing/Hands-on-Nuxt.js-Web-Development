@@ -39,7 +39,7 @@ router.get('/', middleware1, middleware2, middleware3, async (ctx, next) => {
 
   ctx.type = 'json'
   ctx.body = {
-    message: 'Hello World!'
+    message: 'Hello World!',
   }
 })
 

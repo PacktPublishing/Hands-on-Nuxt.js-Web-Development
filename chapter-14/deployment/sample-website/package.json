@@ -8,25 +8,21 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve",
+    "generate": "nuxt build && nuxt export"
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "cross-env": "^5.2.0",
     "foundation-icon-fonts": "^0.1.1",
-    "foundation-sites": "^6.5.3",
-    "jquery": "^3.4.1",
-    "jquery-ui-bundle": "^1.12.1-migrate",
-    "motion-ui": "^2.0.3",
-    "nuxt": "^2.11.0",
-    "swiper": "^4.5.0",
-    "what-input": "^5.2.3"
+    "foundation-sites": "^6.6.3",
+    "jquery": "^3.5.1",
+    "nuxt": "^2.13.2",
+    "swiper": "^5.4.5",
+    "what-input": "^5.2.10"
   },
   "devDependencies": {
-    "less": "^3.10.1",
-    "less-loader": "^5.0.0",
-    "node-sass": "^4.13.1",
-    "nodemon": "^1.19.1",
-    "sass-loader": "^7.2.0"
+    "less": "^3.11.3",
+    "less-loader": "^6.1.2"
   }
 }

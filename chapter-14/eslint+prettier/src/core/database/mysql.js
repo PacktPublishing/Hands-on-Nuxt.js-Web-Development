@@ -14,7 +14,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'tklau',
-  database: 'nuxt-auth'
+  database: 'nuxt-auth',
 })
 
 // Ping database to check for common exception errors.

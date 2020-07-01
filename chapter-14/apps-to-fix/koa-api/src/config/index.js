@@ -14,7 +14,7 @@ export default {
     url: 'mongodb://' + database.host + ':' + database.port + '/' + database.dbname
   },
   server: {
-    port: 3030
+    port: 4000
   },
   static_dir: {
     root: '../static'

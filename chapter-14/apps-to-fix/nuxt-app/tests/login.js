@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  'Local login test' : function (browser) {
+  'Local login test': function (browser) {
     browser
       .url(browser.launchUrl + '/login')
       .waitForElementVisible('body', 1000)

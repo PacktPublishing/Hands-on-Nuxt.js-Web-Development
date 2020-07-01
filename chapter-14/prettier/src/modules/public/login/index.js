@@ -8,7 +8,7 @@ import googleMe from './_routes/google/me'
 // Better with prefix
 // https://www.npmjs.com/package/koa-router#router-prefixes
 const router = new Router({
-  prefix: '/login'
+  prefix: '/login',
 })
 
 const routes = [local, googleUrl, googleMe]

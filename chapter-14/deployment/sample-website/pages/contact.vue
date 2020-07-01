@@ -8,7 +8,7 @@
         <div class="large-6 medium-6 cell">
 
           <div data-aos="fade-in">
-            <img :src="requireImage(post.image.src)" :alt="post.image.alt">
+            <img :src="$loadAssetImage(post.image.src)" :alt="post.image.alt">
           </div>
 
         </div>
@@ -93,7 +93,6 @@
 
 <script>
 import $ from 'jquery'
-import AOS from 'aos'
 
 const post = {
   id: 4,
@@ -109,27 +108,20 @@ const post = {
 }
 
 export default {
-  layout: 'contact',
-  data() {
+  data () {
     return {
       post: post
     }
   },
+
   head () {
     return {
       title: this.post.title || 'all',
     }
   },
-  mounted() {
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
+
+  mounted () {
+    $(document).foundation()
   }
 }
 </script>
-
-<style lang="less">
-/** empty */
-</style>

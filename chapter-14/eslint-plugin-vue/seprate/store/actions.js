@@ -1,6 +1,7 @@
 'use strict'
 
 import queryString from 'query-string'
+
 const cookies = process.client ? require('js-cookie') : undefined
 
 export default {

@@ -4,7 +4,3 @@
     <span class="underline-logo"></span>
   </nuxt-link>
 </template>
-
-<style>
-/** empty */
-</style>

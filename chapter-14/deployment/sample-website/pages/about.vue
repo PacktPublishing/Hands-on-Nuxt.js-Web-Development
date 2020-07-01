@@ -1,13 +1,5 @@
 <template>
 
-  <transition
-    appear
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:after-enter="afterEnter"
-    v-on:leave="leave"
-    v-bind:css="false">
-
   <!-- row -->
   <div class="row">
     <div class="grid-container">
@@ -17,7 +9,7 @@
         <div class="large-shrink medium-6 cell">
 
           <div data-aos="fade-in">
-            <img :src="requireImage(post.image.src)" :alt="post.image.alt">
+            <img :src="$loadAssetImage(post.image.src)" :alt="post.image.alt">
           </div>
 
         </div>
@@ -37,14 +29,9 @@
   </div>
   <!-- row -->
 
-</transition>
-
 </template>
 
 <script>
-import $ from 'jquery'
-import AOS from 'aos'
-
 const post = {
   id: 2,
   slug: 'about',
@@ -66,11 +53,13 @@ export default {
       }, 1000)
     })
   },
+
   data () {
     return {
       post: post
     }
   },
+
   head () {
     return {
       title: this.post.title || 'all',
@@ -80,58 +69,11 @@ export default {
       ]
     }
   },
-  mounted () {
-    // AOS scroll reveal.
-    // http://michalsnik.github.io/aos/
-    AOS.init({
-      duration: 1200,
-    })
-  },
-  // transition: {
-  //   name: 'fade-about',
-  //   mode: 'out-in'
-  // },
-  transition: {
-    mode: 'out-in',
-    css: false,
-    beforeEnter (el) {
-      console.log('before in transition object')
-    },
-    enter (el, done) {
-      console.log('enter in transition object')
-      done()
-    },
-    afterEnter (el) {
-      console.log('after enter in transition object')
-    },
-    leave (el, done) {
-      console.log('leave in transition object')
-      done()
-    }
-  },
+
   methods: {
     getpost (post) {
       return post.slug === this.$route.params.slug
     },
-
-    // https://nuxtjs.org/api/pages-transition
-    // https://vuejs.org/v2/guide/transitions.html#JavaScript-Hooks
-    beforeEnter (el) {
-      console.log('before in methods object')
-    },
-    enter (el, done) {
-      console.log('enter in methods object')
-    },
-    afterEnter (el) {
-      console.log('after enter in transition object')
-    },
-    leave (el, done) {
-      console.log('leave in methods object')
-    },
   }
 }
 </script>
-
-<style lang="less" scoped>
-/** empty */
-</style>

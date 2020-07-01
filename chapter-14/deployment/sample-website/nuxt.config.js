@@ -1,16 +1,22 @@
 const pkg = require('./package')
 
-module.exports = {
+export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
-  // https://nuxtjs.org/api/configuration-router#linkactiveclass
-  router: {
-    // linkActiveClass: 'current'
-  },
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  // target: 'server',
+  target: 'static',
 
   /*
   ** Headers of the page
-  * https://github.com/nuxt/vue-meta
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: 'LAU TIAM KOK | PORTFOLIO',
@@ -42,23 +48,31 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // 'foundation-sites/dist/css/foundation.min.css',
-    // 'foundation-icon-fonts/foundation-icons.css',
+    'foundation-sites/dist/css/foundation.min.css',
+    'foundation-icon-fonts/foundation-icons.css',
+    'swiper/css/swiper.css',
     // 'jquery-ui-bundle/jquery-ui.min.css',
 
     // LESS files in the project.
+    'assets/less/nuxt-transitions.less',
     'assets/less/main.less',
-
-    // SCSS files in the project
-    'assets/scss/main.scss'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/mixin-utils.js'
+    '~/plugins/utils.js',
+    '~/plugins/client-only/foundation.client.js', // only in client side
+    '~/plugins/client-only/swiper.client.js', // only in client side
+    '~/plugins/client-only/aos.client.js', // only in client side
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
 
   /*
   ** Nuxt.js modules
@@ -95,12 +109,9 @@ module.exports = {
 
   // Global setting for page components.
   // https://nuxtjs.org/api/configuration-transition
-  transition: {
+  pageTransition: {
     name: 'bounce',
     mode: 'out-in',
-    beforeEnter (el) {
-      console.log('Before enter...');
-    }
   },
 
   // Global setting for layouts.

@@ -2,7 +2,6 @@
   <div>
     <h1>About page</h1>
     <p>{{ message }}</p>
-    </div>
   </div>
 </template>
 

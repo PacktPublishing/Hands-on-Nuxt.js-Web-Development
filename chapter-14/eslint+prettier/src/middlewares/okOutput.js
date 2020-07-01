@@ -9,7 +9,7 @@ export default async (ctx, next) => {
   if (ctx.status === 200) {
     ctx.body = {
       status: 200,
-      data: ctx.body
+      data: ctx.body,
     }
   }
 }

@@ -2,7 +2,7 @@
 
 import Router from 'koa-router'
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import pool from 'core/database/mysql'
 import config from 'config'
 
@@ -39,7 +39,7 @@ router.post('/local', async (ctx, next) => {
 
   try {
     users = await pool.query('SELECT * FROM `users` WHERE username = ?', [username])
-  } catch(err) {
+  } catch (err) {
     ctx.throw(400, err.sqlMessage)
   }
 
@@ -50,8 +50,8 @@ router.post('/local', async (ctx, next) => {
   let match = false
 
   try {
-    match = await bcrypt.compare(password, user.password)
-  } catch(err) {
+    match = await bcrypt.compareSync(password, user.password)
+  } catch (err) {
     ctx.throw(401, err)
   }
   if (match === false) {

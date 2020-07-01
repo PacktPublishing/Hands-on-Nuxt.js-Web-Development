@@ -1,7 +1,7 @@
 'use strict'
 
 import Router from 'koa-router'
-import cookie from 'cookie'
+// import cookie from 'cookie'
 
 const router = new Router()
 
