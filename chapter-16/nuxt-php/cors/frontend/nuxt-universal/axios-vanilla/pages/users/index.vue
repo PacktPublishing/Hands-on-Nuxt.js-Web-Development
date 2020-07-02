@@ -22,7 +22,7 @@ export default {
   async asyncData ({ error, $axios }) {
     // console.log('server once and client side axios.defaults.baseURL =', axios.defaults.baseURL)
     try {
-      let { data } = await $axios.get('/api/users')
+      let { data } = await $axios.get('/users')
       return {
         users: data.data
       }

@@ -1,7 +1,7 @@
 {
   "name": "nuxt-php",
   "version": "1.0.0",
-  "description": "My phenomenal Nuxt.js project",
+  "description": "My legendary Nuxt.js project",
   "author": "Lau Tiam kok",
   "private": true,
   "scripts": {
@@ -12,10 +12,7 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.11.0",
-    "@nuxtjs/proxy": "^2.0.0",
     "axios": "^0.19.2",
-    "nuxt": "^2.13.3",
-    "qs": "^6.9.4"
+    "nuxt": "^2.13.3"
   }
 }

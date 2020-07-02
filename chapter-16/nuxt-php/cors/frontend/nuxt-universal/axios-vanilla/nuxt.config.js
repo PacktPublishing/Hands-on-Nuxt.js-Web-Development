@@ -1,7 +1,20 @@
-module.exports = {
+
+export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
+
+  /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+
   /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: process.env.npm_package_name || '',
@@ -14,35 +27,45 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
+  // https://nuxtjs.org/api/configuration-env#the-env-property
+  env: {
+    // This lets you create a baseUrl property that will be equal to the
+    // BASE_URL environment variable if defined, otherwise, equal to
+    // 'http://localhost:3000'
+    baseUrl: process.env.BASE_URL || 'http://127.0.0.1:3000'
+  },
+
   /*
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+
   /*
   ** Global CSS
   */
   css: [
   ],
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios-api.js'
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
+
   /*
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
   ],
 
-  // https://axios.nuxtjs.org/options#proxy
-  axios: {
-    proxy: true // Can be also an object with default options
-  },
-
-  proxy: {
-    '/api/': { target: 'http://localhost:8181', pathRewrite: {'^/api/': ''} }
-  },
   /*
   ** Build configuration
   */

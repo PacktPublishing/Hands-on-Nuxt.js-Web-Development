@@ -33,7 +33,7 @@
 export default {
   async asyncData ({ params, error, $axios }) {
     try {
-      let { data } = await $axios.get('/api/users/' + params.slug)
+      let { data } = await $axios.get('/users/' + params.slug)
       return {
         user: data.data
       }

@@ -22,7 +22,7 @@ export default {
     var user = null
     if (Object.keys(query).length > 0) {
       try {
-        let { data } = await $axios.get('/api/users/' + query.slug)
+        let { data } = await $axios.get('/users/' + query.slug)
         user = data.data
       } catch (err) {
         let data = err.response.data
@@ -35,7 +35,7 @@ export default {
 
     // console.log('server once and client side axios.defaults.baseURL =', axios.defaults.baseURL)
     try {
-      let { data } = await $axios.get('/api/users')
+      let { data } = await $axios.get('/users')
       return {
         users: data.data,
         user: user

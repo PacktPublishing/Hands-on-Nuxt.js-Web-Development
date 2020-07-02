@@ -19,7 +19,7 @@ const instance = axios.create({
 })
 
 export default (ctx, inject) => {
-  // Inject axios to the context as $axiosApi
-  ctx.$axiosApi = instance
-  inject('axiosApi', instance)
+  // Inject axios to the context as $axios
+  ctx.$axios = instance
+  inject('axios', instance)
 }

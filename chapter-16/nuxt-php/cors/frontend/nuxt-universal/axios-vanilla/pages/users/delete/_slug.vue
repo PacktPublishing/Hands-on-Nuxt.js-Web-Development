@@ -39,7 +39,7 @@ export default {
   },
   async asyncData ({ params, error, $axios }) {
     try {
-      let { data } = await $axios.get('/api/users/' + params.slug)
+      let { data } = await $axios.get('/users/' + params.slug)
       let user = data.data
       return {
         uuid: user.uuid,
@@ -64,7 +64,7 @@ export default {
         }
         // Must use data key to send the delete data.
         // https://github.com/axios/axios/issues/736
-        let { data } = await this.$axios.delete('/api/user', {
+        let { data } = await this.$axios.delete('/user', {
           data: qs.stringify(payload)
         })
         let result = data.data

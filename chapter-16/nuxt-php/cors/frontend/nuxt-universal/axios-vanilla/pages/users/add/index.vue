@@ -42,7 +42,7 @@ export default {
       this.error = null
       this.message = null
       try {
-        let { data } = await this.$axios.post('/api/user', qs.stringify({
+        let { data } = await this.$axios.post('/user', qs.stringify({
           name: this.name,
           slug: this.slug
         }))
