@@ -10,13 +10,13 @@ const middleware3 = async (ctx, next) => {
   await next()
 }
 
-const middleware1 = async (ctx, next) => {
+const middleware1 = async(ctx, next) => {
   console.log('I am the first. ')
   await next()
   console.log('I am the last. ')
 }
 
-const middleware2 = async (ctx, next) => {
+const middleware2 = async(ctx, next) => {
   console.log('I am the second. ')
   await next()
   console.log('I am the third. ')

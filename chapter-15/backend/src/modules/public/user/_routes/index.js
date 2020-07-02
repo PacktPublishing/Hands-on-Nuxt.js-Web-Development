@@ -9,7 +9,7 @@ const router = new Router()
 router.get('/', async (ctx, next) => {
   try {
     var users = await pool.query(
-      'SELECT `id`, `name`, `created_on`, `last_on` FROM `users`'
+      'SELECT `id`, `name`, `created_on` FROM `users`'
     )
   } catch (err) {
     // Throw the error.

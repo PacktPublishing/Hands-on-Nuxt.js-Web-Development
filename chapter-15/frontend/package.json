@@ -1,0 +1,23 @@
+{
+  "name": "spa-axios",
+  "version": "1.0.0",
+  "description": "My fantastic Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "export": "nuxt export",
+    "serve": "nuxt serve",
+    "generate": "nuxt build && nuxt export",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "js-cookie": "^2.2.1",
+    "mkdirp": "^1.0.4",
+    "nuxt": "^2.13.2"
+  },
+  "devDependencies": {}
+}

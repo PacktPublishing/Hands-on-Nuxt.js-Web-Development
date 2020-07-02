@@ -11,7 +11,7 @@ const router = new Router()
 // Add POST - /public/login/local
 // You can login with:
 // curl -X POST -H "Content-Type: application/json" --data '{"username":"xxx", "password":"xxx"}' http://localhost:9000/public/login/local
-// curl -X POST -d "username=demo&password=123123" -H "Content-Type: application/x-www-form-urlencoded" http://localhost:3030/public/login/local
+// curl -X POST -d "username=demo&password=123123" -H "Content-Type: application/x-www-form-urlencoded" http://localhost:4000/public/login/local
 router.post('/local', async (ctx, next) => {
   // Get the parsed data.
   let request = ctx.request.body || {}
@@ -38,9 +38,7 @@ router.post('/local', async (ctx, next) => {
   let users = []
 
   try {
-    users = await pool.query('SELECT * FROM `users` WHERE username = ?', [
-      username
-    ])
+    users = await pool.query('SELECT * FROM `users` WHERE username = ?', [username])
   } catch (err) {
     ctx.throw(400, err.sqlMessage)
   }
@@ -67,7 +65,11 @@ router.post('/local', async (ctx, next) => {
   // 5 minutes => 60 * 5
   let token = jwt.sign(payload, config.JWT_SECRET, { expiresIn: 1 * 60 })
 
-  ctx.body = token
+  ctx.body = {
+    user: payload,
+    message: 'logged in ok',
+    token: token
+  }
 })
 
 export default router
