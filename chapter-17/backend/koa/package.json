@@ -1,0 +1,24 @@
+{
+  "name": "koa-rethinkdb-realtime",
+  "version": "1.0.0",
+  "description": "My legendary Koa.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "backpack",
+    "build": "backpack build",
+    "start": "cross-env NODE_ENV=production node build/main.js"
+  },
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^9.1.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.15",
+    "rethinkdb": "^2.4.2",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "backpack-core": "^0.8.4"
+  }
+}
