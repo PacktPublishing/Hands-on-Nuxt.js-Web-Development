@@ -15,7 +15,3 @@
     <nuxt />
   </div>
 </template>
-
-<style>
-/** empty */
-</style>
