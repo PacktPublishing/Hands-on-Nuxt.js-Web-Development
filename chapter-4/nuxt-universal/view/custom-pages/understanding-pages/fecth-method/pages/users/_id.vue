@@ -15,6 +15,7 @@
 import axios from 'axios'
 
 export default {
+  name: 'id',
   async asyncData ({ params, error }) {
     try {
       let { data } = await axios.get('https://jsonplaceholder.typicode.com/users/' + params.id)

@@ -6,14 +6,20 @@
 
 <script>
 export default {
-  data: () => ({
-    loading: false
-  }),
+  // data: () => ({
+  //   loading: false
+  // }),
+  // Same as:
+  data () {
+    return {
+      loading: false
+    }
+  },
   methods: {
-    start() {
+    start () {
       this.loading = true
     },
-    finish() {
+    finish () {
       this.loading = false
     }
   }

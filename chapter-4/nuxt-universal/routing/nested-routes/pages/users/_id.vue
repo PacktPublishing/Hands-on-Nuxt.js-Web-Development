@@ -15,19 +15,9 @@
 import axios from 'axios'
 
 export default {
-  name: 'id',
-  async asyncData ({ params, error }) {
-    try {
-      let { data } = await axios.get('https://jsonplaceholder.typicode.com/users/' + params.id)
-      return {
-        user: data
-      }
-    } catch (e) {
-      return error({
-        statusCode: 404,
-        message: 'User not found'
-      })
-    }
+  async asyncData ({ params }) {
+    let { data } = await axios.get('https://jsonplaceholder.typicode.com/users/' + params.id)
+    return { user: data }
   }
 }
 </script>
