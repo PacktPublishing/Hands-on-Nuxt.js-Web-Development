@@ -1,7 +1,7 @@
 'use strict'
 
-import 'swiper/css/swiper.min.css'
+import 'swiper/swiper-bundle.css'
 import Vue from 'vue'
-import Swiper from 'swiper'
+import Swiper from 'swiper/bundle'
 
 Vue.prototype.$swiper = Swiper

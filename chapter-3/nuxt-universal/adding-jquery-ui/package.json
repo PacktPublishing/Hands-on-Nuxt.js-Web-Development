@@ -8,13 +8,12 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
     "jquery": "^3.5.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
-    "nuxt": "^2.12.2"
-  },
-  "devDependencies": {
+    "nuxt": "^2.13.3"
   }
 }

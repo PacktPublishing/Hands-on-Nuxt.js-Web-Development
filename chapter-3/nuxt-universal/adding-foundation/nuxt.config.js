@@ -2,10 +2,21 @@ const pkg = require('./package')
 // const path = require("path")
 
 export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
   /*
+  ** Nuxt target
+  ** See https://nuxtjs.org/api/configuration-target
+  */
+  target: 'server',
+
+  /*
   ** Headers of the page
+  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
     title: pkg.name,
@@ -49,6 +60,12 @@ export default {
     '~/plugins/client-only/foundation.client.js', // only in client side
     '~/plugins/client-only/motion-ui.client.js', // only in client side
   ],
+
+  /*
+  ** Auto import components
+  ** See https://nuxtjs.org/api/configuration-components
+  */
+  components: true,
 
   /*
   ** Nuxt.js modules

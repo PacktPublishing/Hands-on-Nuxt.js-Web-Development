@@ -8,18 +8,19 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
     "foundation-icon-fonts": "^0.1.1",
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.1",
-    "nuxt": "^2.12.2",
-    "what-input": "^5.2.9"
+    "nuxt": "^2.13.3",
+    "what-input": "^5.2.10"
   },
   "devDependencies": {
     "motion-ui": "^2.0.3",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^9.0.1"
   }
 }
