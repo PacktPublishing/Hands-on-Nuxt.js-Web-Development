@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>{{ message }}</h1>
-    <p>This is Nuxt + Python.</p>
+    <p>This is Nuxt + Express.</p>
+    <nuxt-link to="/about">about</nuxt-link>
   </div>
 </template>
 
@@ -9,16 +10,13 @@
 import axios from 'axios'
 
 export default {
-  async asyncData () {
-    let { data } = await axios.get('http://127.0.0.1:5000')
-    console.log(data)
-    return {
-      message: data.message
-    }
+  async asyncData ({ $http }) {
+    const { message } = await $http.$get('http://127.0.0.1:4000')
+    return { message }
   },
   head () {
     return {
-      title: 'Nuxt + Python'
+      title: 'Nuxt + Express'
     }
   }
 }
