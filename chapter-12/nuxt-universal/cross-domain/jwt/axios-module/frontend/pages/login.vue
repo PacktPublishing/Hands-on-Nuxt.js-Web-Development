@@ -8,7 +8,7 @@
         <div class="large-6 cell">
 
           <div v-if="!$store.state.auth">
-            <h1>Please login to see the secret content</h1>
+            <h1>Please login to see the secured content</h1>
             <form v-on:submit.prevent="login">
               <p v-if="formError" class="error">{{ formError }}</p>
               <p>To login, use <b>demo</b> as username and <b>123123</b> as password.</p>
@@ -21,13 +21,13 @@
 
           <div v-else>
             <h2>Hello {{ $store.state.auth.user.name }}!</h2>
-            <p>I am the secret content, I am shown only when the user is connected.</p>
+            <p>I am the secured content, I am shown only when the user is connected.</p>
             <p>You can also refresh this page, you'll still be connected!</p>
             <button class="button" v-on:click="logout">Logout</button>
           </div>
           <p>
-            <NuxtLink to="/secret">
-              Super secret page
+            <NuxtLink to="/secured">
+              Super secured page
             </NuxtLink>
           </p>
 

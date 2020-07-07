@@ -7,7 +7,7 @@
         <!-- cell -->
         <div class="large-12 cell">
 
-          <h1>Super secret page</h1>
+          <h1>Super secured page</h1>
           <p>If you try to access this URL not connected, you will see the error page telling your that you are not connected.</p>
           <p>Message from secured API: {{ greeting }}</p>
           <p> {{ $store.state }}</p>
@@ -25,14 +25,12 @@
 </template>
 
 <script>
-import axios from '~/plugins/axios-api'
-
 export default {
-  async asyncData ({ redirect }) {
+  async asyncData ({ $axios, redirect }) {
     try {
-      const { data } = await axios.get('/private')
+      const { data } = await $axios.$get('/api/private')
       return {
-        greeting: data.data.message
+        greeting: data.message
       }
     } catch (error) {
       if(process.browser){
