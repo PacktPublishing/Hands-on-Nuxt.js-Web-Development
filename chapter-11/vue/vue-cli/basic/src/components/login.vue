@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="!$store.state.user">
-      <h1>Please login to see the secret content</h1>
+      <h1>Please login to see the secured content</h1>
       <form @submit.prevent="login">
         <p v-if="error" class="error">
           {{ error }}
@@ -16,14 +16,14 @@
     </div>
     <div v-else>
       <h1>Hello {{ $store.state.user.name }}!</h1>
-      <p>I am the secret content, I am shown only when the user is connected.</p>
+      <p>I am the secured content, I am shown only when the user is connected.</p>
       <p>You can also refresh this page, you'll still be connected!</p>
       <button @click="logout">
         Logout
       </button>
     </div>
     <p>
-      <router-link to="/secret">secret page</router-link>
+      <router-link to="/secured">secured page</router-link>
     </p>
   </div>
 </template>

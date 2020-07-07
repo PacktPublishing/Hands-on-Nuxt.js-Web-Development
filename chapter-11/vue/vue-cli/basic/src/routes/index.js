@@ -1,11 +1,11 @@
 'use strict'
 
 import login from './login'
-import secret from './secret'
+import secured from './secured'
 
 const routes = [
   login,
-  secret
+  secured
 ]
 
 export default routes

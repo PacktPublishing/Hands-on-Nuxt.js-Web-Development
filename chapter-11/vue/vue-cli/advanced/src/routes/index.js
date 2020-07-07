@@ -2,13 +2,13 @@
 
 import home from './home'
 import foo from './foo'
-import bar from './bar'
+import secured from './secured'
 import login from './login'
 
 const routes = [
   home,
   foo,
-  bar,
+  secured,
   login
 ]
 
