@@ -34,7 +34,7 @@ export default {
     return {
       title: this.user.name,
       meta: [
-        { hid: 'description', name: 'description', content: this.user.website }
+        { hid: 'description', name: 'description', content: 'My Nuxt user: ' + this.user.name }
       ]
     }
   }

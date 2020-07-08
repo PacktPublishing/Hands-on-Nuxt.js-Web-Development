@@ -20,7 +20,7 @@ export default {
       // Disable template.
       // titleTemplate: null,
       meta: [
-        { hid: 'description', name: 'description', content: 'Meta content for home...' }
+        { hid: 'description', name: 'description', content: 'My Nuxt portfolio' }
       ]
     }
   }

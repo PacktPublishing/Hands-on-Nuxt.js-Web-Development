@@ -30,7 +30,7 @@ export default {
     return {
       title: 'Users',
       meta: [
-        { hid: 'description', name: 'description', content: 'Meta content for users...' }
+        { hid: 'description', name: 'description', content: 'My Nuxt users...' }
       ]
     }
   }

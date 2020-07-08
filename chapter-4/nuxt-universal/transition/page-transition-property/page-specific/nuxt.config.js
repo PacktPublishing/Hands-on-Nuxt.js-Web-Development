@@ -38,7 +38,7 @@ export default {
   */
   css: [
     // The CSS transition file.
-    'assets/less/transitions.less'
+    'assets/css/transitions.css'
   ],
 
   /*

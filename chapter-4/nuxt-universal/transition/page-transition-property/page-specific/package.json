@@ -13,10 +13,6 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "nuxt": "^2.13.2"
-  },
-  "devDependencies": {
-    "less": "^3.11.3",
-    "less-loader": "^6.1.2"
+    "nuxt": "^2.13.3"
   }
 }

@@ -1,0 +1,42 @@
+/**
+ * Global Settings
+ * https://nuxtjs.org/guide/routing#transitions
+ */
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-leave,
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms;
+}
+
+/**
+ * Page Settings
+ * A custom transition for a specific page with the transition property.
+ */
+
+.fade-about-enter,
+.fade-about-leave-to {
+  opacity: 0;
+}
+
+.fade-about-leave,
+.fade-about-enter-to {
+  opacity: 1;
+}
+
+.fade-about-enter-active,
+.fade-about-leave-active {
+  /**
+   * Make it 3 second to fade in and out instead.
+   */
+  transition: opacity 3s;
+}
