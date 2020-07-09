@@ -8,7 +8,6 @@ import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 
 // Import custom local middlewares.
-import config from './config'
 import routesPublic from './routes-public'
 import routesPrivate from './routes-private'
 import sample from './middlewares/sample'
@@ -17,18 +16,12 @@ import notFound from './middlewares/notFound'
 import okOutput from './middlewares/okOutput'
 
 export default (app) => {
-  // Catch and format the error in the upstream.
-  // https://github.com/koajs/koa/wiki/Error-Handling
-  app.use(errorHandler)
-  app.use(notFound)
-  app.use(okOutput)
-
   // Static files are files that clients download as they are from the server.
   // Create a new directory, public. Koa, by default doesn't allow you to
   // serve static files.
   // https://github.com/koajs/static
   // https://www.tutorialspoint.com/koajs/koajs_static_files.htm
-  app.use(serve(config.static_dir.root))
+  app.use(serve('assets/'))
 
   // Add favicon.
   app.use(favicon('static/favicon.ico'))
@@ -38,6 +31,12 @@ export default (app) => {
   // https://github.com/koajs/bodyparser
   // https://github.com/koajs/koa/issues/719
   app.use(bodyParser())
+
+  // Catch and format the error in the upstream.
+  // https://github.com/koajs/koa/wiki/Error-Handling
+  app.use(errorHandler)
+  app.use(notFound)
+  app.use(okOutput)
 
   // A sample middleware in a separate file.
   app.use(sample)
