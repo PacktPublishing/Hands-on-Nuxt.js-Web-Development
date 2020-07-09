@@ -3,10 +3,10 @@
 // Import node_modules middlewares.
 // Check other Koa official middlewares: https://github.com/koajs
 import serve from 'koa-static'
+import favicon from 'koa-favicon'
 import bodyParser from 'koa-bodyparser'
 
 import routes from './routes'
-import config from 'Configs'
 
 // Import custom local middlewares.
 import sample from 'Middlewares/sample'
@@ -17,24 +17,27 @@ import rdbOpenConnection from 'Middlewares/database/rdb/connection/open'
 import rdbCloseConnection from 'Middlewares/database/rdb/connection/close'
 
 export default (app) => {
-  // Catch and format the error in the upstream.
-  // https://github.com/koajs/koa/wiki/Error-Handling
-  app.use(errorHandler)
-  app.use(notFound)
-  app.use(okOutput)
-
   // Static files are files that clients download as they are from the server.
   // Create a new directory, public. Koa, by default doesn't allow you to
   // serve static files.
   // https://github.com/koajs/static
   // https://www.tutorialspoint.com/koajs/koajs_static_files.htm
-  app.use(serve(config.static_dir.root))
+  app.use(serve('assets'))
+
+  // Add favicon.
+  app.use(favicon('static/favicon.ico'))
 
   // The parsed body will store in ctx.request.body
   // If nothing was parsed, body will be an empty object {}
   // https://github.com/koajs/bodyparser
   // https://github.com/koajs/koa/issues/719
   app.use(bodyParser())
+
+  // Catch and format the error in the upstream.
+  // https://github.com/koajs/koa/wiki/Error-Handling
+  app.use(errorHandler)
+  app.use(notFound)
+  app.use(okOutput)
 
   // A sample middleware in a separate file.
   app.use(sample)
