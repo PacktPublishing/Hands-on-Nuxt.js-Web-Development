@@ -21,7 +21,7 @@ export default (app) => {
   // serve static files.
   // https://github.com/koajs/static
   // https://www.tutorialspoint.com/koajs/koajs_static_files.htm
-  app.use(serve('assets/'))
+  app.use(serve('assets'))
 
   // Add favicon.
   app.use(favicon('static/favicon.ico'))
