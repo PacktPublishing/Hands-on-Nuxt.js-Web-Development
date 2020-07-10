@@ -1,0 +1,787 @@
+/**
+ * ===============================================================
+ * Guide
+ * ===============================================================
+ */
+
+// .grid-x {
+//     border:1px solid red;
+// }
+
+// .cell {
+//     border: 1px solid blue;
+// }
+
+// .row {
+//     border: 2px solid green;
+// }
+
+/**
+ * ===============================================================
+ * Variables
+ * ===============================================================
+ */
+
+/**
+ * Fonts
+ */
+@font-title: 'Helvetica Neue', serif;
+@font-body: 'Helvetica Neue', sans-serif;
+@font-size: 18px;
+
+/**
+ * Paths
+ */
+@path-dist-image: "images";
+@path-dist-font: "fonts";
+@path-node-modules: "../../node_modules";
+
+/**
+ * Grey shades
+ * https://www.w3schools.com/colors/colors_shades.asp
+ */
+@grey-xdark: #101010;
+@grey-dark: #4e4e4e;
+@grey-medium: #8c8a8a;
+@grey-light: #d3d3d3;
+@grey-xlight: #f5f5f5;
+
+/**
+ * ===============================================================
+ * Dependencies
+ * ===============================================================
+ */
+
+// @import 'icons.css';
+@import 'font-face.less';
+@import 'nuxt-transitions.less';
+@import '@{path-node-modules}/foundation-sites/dist/css/foundation.min.css';
+@import '@{path-node-modules}/foundation-icon-fonts/foundation-icons.css';
+@import '@{path-node-modules}/swiper/swiper-bundle.css';
+// @import '@{path-node-modules}/aos/dist/aos.css';
+
+/**
+ * ===============================================================
+ * HTML/ Global
+ * ===============================================================
+ */
+html,
+body {
+  position: relative;
+}
+
+body {
+  color: #000000;
+  font-family: @font-title;
+  font-size: @font-size;
+  letter-spacing: 1px;
+}
+
+p:last-child {
+  margin: 0 !important;
+}
+
+a,
+i {
+  .transition ();
+}
+
+/**
+ * ===============================================================
+ * Common
+ * ===============================================================
+ */
+
+.transition () {
+   -webkit-transition: all 0.5s; /* Safari */
+   transition: all 0.5s;
+ }
+
+.invisible {
+  visibility: hidden;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/**
+ * Flex centre the child in it.
+ * https://davidwalsh.name/css-vertical-center-flexbox
+ */
+.flex-centre {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+}
+
+/**
+ * Media query
+ * http://foundation.zurb.com/sites/docs/media-queries.html
+ */
+
+/* xxLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 90em) {
+  /**
+   * Change container size on xxlarge screen.
+   */
+  .grid-container {
+    max-width: 110rem;
+  }
+}
+
+/* xLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 75em) {
+  //
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .grid-container:not(.full-height):not(.fluid) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  .grid-container:not(.full-height):not(.fluid) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .grid-container:not(.full-height):not(.fluid) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .grid-container:not(.full-height):not(.fluid) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  .grid-container:not(.full-height):not(.fluid) {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+}
+
+/**
+ * ===============================================================
+ * Header
+ * ===============================================================
+ */
+
+.row-header {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.button-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: @grey-dark;
+
+  &:hover {
+    color: @grey-xdark;
+
+    .underline-logo {
+      border-bottom: 1px solid @grey-xdark;
+    }
+  }
+}
+
+.underline-logo {
+  border-bottom: 1px solid transparent;
+  display: block;
+  width: 98%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  -webkit-transition: all 0.5s; /* Safari */
+  transition: all 0.5s;
+}
+
+.nav-header {
+  a {
+    //  border: 1px solid red;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: 400;
+    color: @grey-dark;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid @grey-xdark;
+      //  color: @theme-colour;
+    }
+  }
+
+  li {
+    margin-left: 0 !important;
+  }
+
+  li:not(:last-child) {
+    margin-right: 40px;
+  }
+
+ // li:first-child:not(.child) a {
+ //     padding-left: 0;
+ // }
+
+  a.current {
+    color: @grey-xdark;
+    border-bottom: 1px solid @grey-xdark;
+  }
+}
+
+  .button-hamburger i {
+  color: @grey-medium;
+
+  &:hover {
+    color: @grey-dark;
+  }
+}
+
+/**
+ * Media query
+ * http://foundation.zurb.com/sites/docs/media-queries.html
+ */
+
+/* xxLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 90em) {
+  //
+}
+
+/* xLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 75em) {
+  //
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  //
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  //
+}
+
+/* XLarge only */
+@media screen and (min-width: 75em) and (max-width: 90.9375em) {
+  //
+}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .button-logo {
+    font-size: 1.3em;
+  }
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  //
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  //
+}
+
+/**
+ * ===============================================================
+ * Work Single
+ * ===============================================================
+ */
+
+.image-fullscreen {
+  height: 100vh;
+}
+
+.image-halfscreen {
+  height: 50vh;
+}
+
+.image-centralised {
+  img {
+    width: 100%;
+  }
+}
+
+.container-image {
+  margin-top: 100px;
+}
+
+.is-group {
+  .container-image {
+    margin-top: 0;
+    margin-bottom: 100px;
+  }
+}
+
+.group-heading {
+  padding-top: 100px;
+  padding-bottom: 10px;
+}
+
+.image-title {
+  padding-bottom: 10px;
+}
+
+.image-description {
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  &.no-padding-right {
+    padding-right: 0;
+  }
+}
+
+.container-text {
+  padding-top: 100px;
+}
+
+/**
+* Media query
+* http://foundation.zurb.com/sites/docs/media-queries.html
+*/
+
+/* xxLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 90em) {
+  //
+}
+
+/* xLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 75em) {
+  //
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  //
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  //
+}
+
+/* XLarge only */
+@media screen and (min-width: 75em) and (max-width: 90.9375em) {
+  //
+}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  //
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  //
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  //
+}
+
+/**
+ * ===============================================================
+ * Nav mobile
+ * ===============================================================
+ */
+
+.row-overlay {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+  padding-top: 60px;
+
+  background-color: #ffffff; // fallback
+  background: rgba(255, 255, 255, 1); // no transparency
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.button-exit-overlay-menu i {
+  color: @grey-medium;
+
+  &:hover {
+    color: @grey-dark;
+  }
+}
+
+.row-nav-bottom {
+  padding-top: 60px;
+
+  a {
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 400;
+    color: @grey-dark;
+
+    &:hover {
+      color: @grey-medium;
+    }
+  }
+
+  a.current  {
+    color: @grey-medium;
+  }
+}
+
+/**
+ * ===============================================================
+ * About
+ * ===============================================================
+ */
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  .container-text-about {
+    padding-top: 60px;
+  }
+
+  .container-text-contact {
+    padding-top: 60px;
+  }
+}
+
+/**
+ * ===============================================================
+ * Footer
+ * ===============================================================
+ */
+
+footer {
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.grid-container-footer {
+  border-top: 1px solid @grey-medium;
+  padding-top: 60px;
+}
+
+.nav-footer {
+  li {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  a {
+   //  border: 1px solid red;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 8px;
+    font-weight: 400;
+    color: @grey-dark;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid @grey-xdark;
+    }
+  }
+
+  a.current  {
+    color: @grey-xdark;
+    border-bottom: 1px solid @grey-xdark;
+  }
+}
+
+.nav-social {
+
+  i {
+    font-size: 1.5em;
+    color: @grey-medium;
+
+    &:hover {
+      color: @grey-dark;
+    }
+  }
+}
+
+.copyright {
+  color: @grey-medium;
+}
+
+/**
+ * ===============================================================
+ * Works
+ * ===============================================================
+ */
+
+ .image-background {
+     -webkit-background-size: cover;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     display: block;
+
+     img {
+         display: none;
+     }
+ }
+
+ .layer {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  .transition ();
+}
+
+ .container-card {
+   margin-bottom: 50px;
+
+   &:hover {
+     cursor: pointer;
+
+      .layer {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .card-excerpt {
+        opacity: 1;
+      }
+   }
+ }
+
+ .card-work {
+   position: relative;
+   width: 100%;
+   height: 500px;
+   padding: 0;
+ }
+
+ .card-section {
+   padding: 0;
+
+   .card-heading {
+     font-weight: 400;
+     font-size: @font-size;
+
+     a {
+       color: @grey-dark;
+
+       &:hover {
+         color: @grey-medium;
+       }
+     }
+
+   }
+ }
+
+.card-excerpt {
+  color: #ffffff;
+  z-index: 3;
+  opacity: 0;
+  padding: 30px;
+
+  .transition ();
+}
+
+// https://stackoverflow.com/questions/25311541/how-to-vertically-align-text-inside-a-flexbox
+.flex-centre-vh {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+}
+
+/**
+ * Media query
+ * http://foundation.zurb.com/sites/docs/media-queries.html
+ */
+
+/* xxLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 90em) {
+    //
+}
+
+/* xLarge and up */
+/* https://foundation.zurb.com/sites/docs/interchange.html */
+@media screen and (min-width: 75em) {
+    //
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    //
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+    //
+}
+
+/* XLarge only */
+@media screen and (min-width: 75em) and (max-width: 90.9375em) {
+  .card-work {
+    height: 30vw;
+  }
+}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .card-work {
+    height: 33vw;
+  }
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .card-work {
+    height: 30vw;
+  }
+}
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+  .card-work {
+    height: 60vw;
+  }
+}
+
+/**
+ * ===============================================================
+ * Swiper
+ * ===============================================================
+ */
+
+.row-swiper {
+  position: relative;
+
+  .swiper-container {
+    width: 100%;
+    height: 650px;
+    position: static;
+  }
+
+  &.autoheight {
+    .swiper-container {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+  }
+
+  .swiper-slide {
+    font-size: 18px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  /**
+   * Customise the arrow button.
+   * https://stackoverflow.com/questions/45381871/swiper-how-to-customise-arrow-buttons
+   */
+  .swiper-button-next,
+  .swiper-button-prev {
+      color: @grey-medium;
+
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-property: all;
+      -webkit-transition-timing-function: ease-in-out;
+
+      &:hover {
+        color: @grey-xdark;
+      }
+  }
+
+  /**
+   * Float the pagination to center.
+   */
+  .container-pagination {
+    width: 100%;
+    height: 80px;
+
+    .swiper-pagination {
+      width: 100%;
+    }
+  }
+
+  /**
+   * Customise the pagination.
+   * https://github.com/nolimits4web/Swiper/blob/master/demos/070-pagination-custom.html
+   */
+  .swiper-pagination-bullet {
+    margin-left: 5px;
+    margin-right: 5px;
+    background: rgba(0,0,0,1);
+
+    &:hover {
+      color: @grey-dark;
+    }
+  }
+}

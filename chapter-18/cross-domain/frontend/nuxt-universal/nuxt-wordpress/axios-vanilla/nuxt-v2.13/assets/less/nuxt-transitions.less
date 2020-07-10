@@ -1,0 +1,84 @@
+// Global Settings
+// https://nuxtjs.org/guide/routing#transitions
+
+// Variable.
+@fade-selector: page;
+
+.@{fade-selector}-enter,
+.@{fade-selector}-leave-to {
+  opacity: 0;
+}
+
+.@{fade-selector}-leave,
+.@{fade-selector}-enter-to {
+  opacity: 1;
+}
+
+.@{fade-selector}-enter-active,
+.@{fade-selector}-leave-active {
+  transition: opacity 300ms;
+}
+
+// Page Settings
+// A custom transition for a specific page with the transition property.
+
+// Variable.
+@about-selector: fade-about;
+
+.@{about-selector}-enter,
+.@{about-selector}-leave-to {
+  opacity: 0;
+}
+
+.@{about-selector}-leave,
+.@{about-selector}-enter-to {
+  opacity: 1;
+}
+
+.@{about-selector}-enter-active,
+.@{about-selector}-leave-active {
+  transition: opacity 3s; // Make it 3 second to fade in and out instead.
+}
+
+// https://nuxtjs.org/api/configuration-transition
+
+// Variable.
+@layout-selector: layout;
+
+.@{layout-selector}-enter,
+.@{layout-selector}-leave-to {
+  opacity: 0;
+}
+
+.@{layout-selector}-leave,
+.@{layout-selector}-enter-to {
+  opacity: 1;
+}
+
+.@{layout-selector}-enter-active,
+.@{layout-selector}-leave-active {
+  transition: opacity .5s; // Make it .5 second to fade in and out instead.
+}
+
+// https://vuejs.org/v2/guide/transitions.html#CSS-Animations
+
+// Variable.
+@bounce-selector: bounce;
+
+.@{bounce-selector}-enter-active {
+  animation: bounce-in .5s;
+}
+.@{bounce-selector}-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

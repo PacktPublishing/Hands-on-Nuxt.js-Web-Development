@@ -80,11 +80,13 @@ const resolvers = {
   },
 
   Post: {
-    author (root, args, context, info) {
-      // console.log('context =', context)
-      // return find(authors, { id: root.authorId }) // using Lodash
-      return authors.find(author => author.id === root.authorId)
-    }
+    // author (root, args, context, info) {
+    //   // console.log('context =', context)
+    //   // return find(authors, { id: root.authorId }) // using Lodash
+    //   return authors.find(author => author.id === root.authorId)
+    // }
+    // Or:
+    author: root => authors.find(author => author.id === root.authorId),
     // Or:
     // author: root => find(authors, { id: root.authorId }),
   },
