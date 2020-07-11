@@ -17,8 +17,8 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/secret">
-          Secret
+        <nuxt-link to="/secured">
+          Secured
         </nuxt-link>
       </li>
       <li>

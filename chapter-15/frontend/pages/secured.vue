@@ -7,7 +7,7 @@
         <!-- cell -->
         <div class="large-12 cell">
 
-          <h1>Super secret page</h1>
+          <h1>Super secured page</h1>
           <p>If you try to access this URL not connected, you will see the error page telling your that you are not connected.</p>
           <p>Message from secured API: {{ greeting }}</p>
           <p> {{ $store.state }}</p>
@@ -41,6 +41,13 @@ export default {
       return redirect('/login')
     }
   },
+
+  head () {
+    return {
+      title: 'Secured',
+    }
+  },
+
   middleware: ['auth', 'token']
 }
 </script>

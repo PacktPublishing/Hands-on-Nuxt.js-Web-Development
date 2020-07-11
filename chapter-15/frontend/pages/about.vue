@@ -11,10 +11,12 @@ export default {
     return {
       message: 'Something awesome!'
     }
+  },
+
+  head () {
+    return {
+      title: 'About',
+    }
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>

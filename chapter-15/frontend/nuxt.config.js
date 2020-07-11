@@ -14,12 +14,6 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  // Step 1: change mode to 'universal' - mode: 'universal'
-  // Step 2: run 'npm run generate' to generate static data into assets dir
-  // Step 3: change mode to 'static' - mode: 'static'
-  // Step 4: run 'npm run generate' or 'npm run generate:gh-pages' to generate files in dist dir as usual
-  // Step 5: move the data dir in assets dir into dist dir
-  // Step 6: run 'npm run serve'
   // mode: 'universal',
   mode: 'spa',
 
@@ -27,7 +21,6 @@ export default {
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  // Note that you won't get static payloads in dist/_nuxt/static for mode: 'spa'
   target: 'static',
 
   /*
@@ -97,16 +90,9 @@ export default {
     }
   },
 
-  // Note that you won't get dynamic routes generated automatically for mode: 'spa'
-  // Dynamic routes are ignored by the generate command. If you want Nuxt.js to
-  // generate routes with dynamic params, you need to set an array of dynamic
-  // routes. https://nuxtjs.org/api/configuration-generate#routes
+  // Generate 404 page.
+  // https://nuxtjs.org/api/configuration-generate#fallback
   generate: {
-    routes: async function () {
-      const { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
-      return data.map(user => {
-        return '/users/' + user.id
-      })
-    }
-  }
+    fallback: true
+  },
 }
