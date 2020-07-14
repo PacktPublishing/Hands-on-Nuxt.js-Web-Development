@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/proxy": "^2.0.0",
     "axios": "^0.19.2",
-    "nuxt": "^2.13.2",
+    "nuxt": "^2.13.3",
     "socket.io-client": "^2.3.0"
   }
 }

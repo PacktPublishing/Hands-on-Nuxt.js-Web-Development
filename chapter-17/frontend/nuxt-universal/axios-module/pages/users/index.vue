@@ -78,7 +78,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/** empty */
-</style>
