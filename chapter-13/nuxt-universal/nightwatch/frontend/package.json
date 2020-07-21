@@ -18,7 +18,7 @@
     "cookie": "^0.4.1",
     "googleapis": "^52.1.0",
     "js-cookie": "^2.2.1",
-    "nuxt": "^2.13.2",
+    "nuxt": "^2.13.3",
     "query-string": "^6.13.1"
   },
   "devDependencies": {
