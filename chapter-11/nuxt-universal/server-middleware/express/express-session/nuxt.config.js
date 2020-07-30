@@ -26,6 +26,7 @@ export default {
       { hid: 'description', content: 'Auth Routes example' }
     ]
   },
+
   /*
   ** Add server middleware
   ** Nuxt.js uses `connect` module as server
@@ -52,7 +53,7 @@ export default {
     '~/api'
   ],
 
-    /*
+  /*
   ** Global CSS
   */
   css: [

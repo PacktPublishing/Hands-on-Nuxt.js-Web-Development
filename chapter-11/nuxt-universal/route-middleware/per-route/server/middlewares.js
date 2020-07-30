@@ -23,41 +23,6 @@ export default (app) => {
   app.use(notFound)
   app.use(okOutput)
 
-  // Note: this option only feasible if the api is on a separate/ standalone port.
-  // Use koa-jwt to protect entire api or certain group of routes instead of
-  // using custom middleware with jsonwebtoken
-  // https://github.com/koajs/jwt
-
-  // Custom 401 handling if you don't want to expose koa-jwt errors to users.
-  // app.use(function(ctx, next){
-  //   return next().catch((err) => {
-  //     if (401 == err.status) {
-  //       ctx.throw(401, err.message)
-  //       // ctx.status = 401
-  //       // ctx.body = 'Protected resource, use Authorization header to get access\n'
-  //     } else {
-  //       throw err
-  //     }
-  //   })
-  // })
-
-  // app.use(async function (ctx, next) {
-  //   return next().catch((err) => {
-  //     if (err.status === 401) {
-  //       ctx.status = 401;
-  //       let errMessage = err.originalError ?
-  //         err.originalError.message :
-  //         err.message
-  //       ctx.body = {
-  //         error: errMessage
-  //       };
-  //       ctx.set("X-Status-Reason", errMessage)
-  //     } else {
-  //       throw err;
-  //     }
-  //   });
-  // });
-
   // Middleware below this line is only reached if JWT token is valid
   // unless the URL starts with '/public'
   // app.use(jwt({ secret: config.JWT_SECRET }).unless({ path: [/^\/api\/public/, '/', '/about'] }))
@@ -100,37 +65,6 @@ export default (app) => {
 
   // A sample middleware in a separate file.
   app.use(sample)
-
-  // app.use(checkToken)
-  // Place the middleware here of you want to protect the entire api.
-  // app.use(async (ctx, next) => {
-  //   try {
-  //     await next()
-
-  //     // Try to decode & verify the JWT token
-  //     // The token contains user's id ( it can contain more informations )
-  //     // and this is saved in req.user object
-  //     if(ctx.req.hasOwnProperty('headers') && ctx.req.headers.hasOwnProperty('authorization')) {
-  //       ctx.req.user = jwt.verify(ctx.req.headers['authorization'], config.JWT_SECRET, function (err, payload) {
-  //         console.log(payload)
-  //         console.log(err)
-  //       })
-  //     } else {
-  //       // If there is no autorization header, return 401 status code.
-  //       ctx.throw(401, 'token is required.')
-  //     }
-  //   } catch (err) {
-  //     ctx.status = err.status || 500
-
-  //     ctx.type = 'json'
-  //     ctx.body = {
-  //       status: ctx.status,
-  //       message: err.message
-  //     }
-
-  //     ctx.app.emit('error', err, ctx)
-  //   }
-  // })
 
   // Add routes.
   app.use(routesPublic.routes(), routesPublic.allowedMethods())

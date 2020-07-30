@@ -6,8 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "export": "nuxt export",
-    "serve": "nuxt serve"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -16,6 +15,6 @@
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "nuxt": "^2.13.2"
+    "nuxt": "^2.14.0"
   }
 }

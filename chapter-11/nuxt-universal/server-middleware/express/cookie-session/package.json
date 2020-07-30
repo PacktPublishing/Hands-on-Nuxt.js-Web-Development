@@ -12,6 +12,6 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "post-update": "yarn upgrade --latest"
+    "generate": "nuxt generate"
   }
 }
