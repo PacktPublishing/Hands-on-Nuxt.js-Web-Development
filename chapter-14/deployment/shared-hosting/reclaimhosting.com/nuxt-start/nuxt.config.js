@@ -30,7 +30,7 @@ module.exports = {
 
   server: {
     port: 80, // default: 3000
-    host: 'nuxt.stateu.org' // default: localhost
+    host: 'nuxtjs.stateu.org' // default: localhost
   },
 
   /*

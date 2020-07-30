@@ -7,13 +7,12 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "export": "nuxt export",
-    "serve": "nuxt serve",
-    "start": "cross-env NODE_ENV=production node app.js"
+    "start": "cross-env NODE_ENV=production node app.js",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "cross-env": "^7.0.2",
-    "nuxt": "^2.13.2",
-    "nuxt-start": "^2.13.2"
+    "nuxt": "^2.14.0",
+    "nuxt-start": "^2.14.0"
   }
 }
