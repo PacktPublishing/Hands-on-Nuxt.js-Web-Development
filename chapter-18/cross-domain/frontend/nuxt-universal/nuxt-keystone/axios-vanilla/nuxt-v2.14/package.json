@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-keystone",
+  "version": "1.0.0",
+  "description": "My fine Nuxt.js project",
+  "author": "Lau Tiam kok",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "stream": "NUXT_ENV_GEN=stream nuxt generate",
+    "start_url": "BASE_URL=something nuxt start"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^0.19.2",
+    "foundation-icon-fonts": "^0.1.1",
+    "foundation-sites": "^6.6.3",
+    "jquery": "^3.5.1",
+    "mkdirp": "^1.0.4",
+    "nuxt": "^2.14.0",
+    "swiper": "^6.0.2",
+    "what-input": "^5.2.10"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "less": "^3.11.3",
+    "less-loader": "^6.2.0",
+    "sass-loader": "^9.0.2"
+  }
+}
