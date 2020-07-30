@@ -8,16 +8,15 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "export": "nuxt export",
-    "serve": "nuxt serve",
+    "generate": "nuxt generate",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "js-cookie": "^2.2.1",
     "mkdirp": "^1.0.4",
-    "nuxt": "^2.13.3"
+    "nuxt": "^2.14.0"
   },
   "devDependencies": {}
 }
