@@ -1,4 +1,5 @@
 console.log(this)
+
 export default {
   mode: 'universal',
   srcDir: 'src/',
