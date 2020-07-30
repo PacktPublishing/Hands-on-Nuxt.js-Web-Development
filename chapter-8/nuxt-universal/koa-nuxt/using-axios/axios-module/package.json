@@ -8,8 +8,7 @@
     "dev": "backpack",
     "build": "nuxt build && backpack build",
     "start": "cross-env NODE_ENV=production node build/main.js",
-    "export": "nuxt export",
-    "serve": "nuxt serve"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
@@ -21,6 +20,6 @@
     "koa-favicon": "^2.1.0",
     "koa-router": "^9.0.1",
     "koa-static": "^5.0.0",
-    "nuxt": "^2.13.1"
+    "nuxt": "^2.14.0"
   }
 }
