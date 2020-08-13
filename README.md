@@ -10,7 +10,7 @@ This is the code repository for [Hands-on Nuxt.js Web Development - Third Editio
 Nuxt.js is a progressive web framework built on top of Vue.js for server-side rendering (SSR). With Nuxt.js and Vue.js, building universal and static-generated applications from scratch is now easier than ever before.
 
 This book covers the following exciting features: 
-* ntegrate Nuxt with the latest version of Vue.js
+* Integrate Nuxt with the latest version of Vue.js
 * Extend VueJS apps using Nuxt's pages, components, routing, middleware, plugins, and modules
 * Use Nuxt to talk to APIs or data platforms written in any server-side language
 * Create a basic real-time web app using Node.js, Koa.js, and RethinkDB
