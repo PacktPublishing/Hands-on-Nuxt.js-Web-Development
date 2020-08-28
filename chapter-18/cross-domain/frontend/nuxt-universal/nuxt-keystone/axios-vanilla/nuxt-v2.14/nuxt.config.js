@@ -154,6 +154,53 @@ export default {
   // Generate 404 page.
   // https://nuxtjs.org/api/configuration-generate#fallback
   generate: {
-    fallback: true
+    fallback: true,
+
+    // (Optional) Use this only if the Nuxt crawler fails to detect the dynamic routes.
+    routes: async function () {
+      const GET_PROJECTS = `
+        query {
+          allProjects {
+            name
+          }
+        }
+      `
+      // const { data } = await axios.post(remoteUrl + '/admin/api', {
+      //   query: GET_PROJECTS
+      // })
+      // return data.data.allProjects.map((project) => {
+      //   return '/projects/' + project.name
+      // })
+
+      const { data } = await axios.post(remoteUrl + '/admin/api', {
+        query: GET_PROJECTS
+      })
+
+      const routesProjects = data.data.allProjects.map(project => {
+        return {
+          route: '/projects/' + project.name,
+          payload: project
+        }
+      })
+
+      // Count total items and divide the total with the number of items per-page
+      let totalMaxPages = Math.ceil(routesProjects.length / 6)
+      let pagesProjects = []
+
+      // Loop with ES6.
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+      Array(totalMaxPages).fill().map((item, index) => {
+        pagesProjects.push({
+          route: '/projects/pages/' + (index + 1),
+          payload: null
+        })
+      })
+
+      const routes = [
+        ...routesProjects,
+        ...pagesProjects
+      ]
+      return routes
+    }
   },
 }

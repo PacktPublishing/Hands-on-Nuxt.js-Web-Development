@@ -21,7 +21,7 @@
 
                       <!-- vue - loop -->
                       <template v-for="item in nav">
-                        <li><nuxt-link :to="'/' + item.link._label_" v-html="item.title"></nuxt-link></li>
+                        <li><nuxt-link :to="'/' + item.link.name" v-html="item.title"></nuxt-link></li>
                       </template>
                       <!-- vue - loop -->
 
@@ -68,7 +68,7 @@
 
                   <!-- vue - loop -->
                   <template v-for="item in nav">
-                    <li><nuxt-link :to="'/' + item.link._label_" v-html="item.title"></nuxt-link></li>
+                    <li><nuxt-link :to="'/' + item.link.name" v-html="item.title"></nuxt-link></li>
                   </template>
                   <!-- vue - loop -->
 

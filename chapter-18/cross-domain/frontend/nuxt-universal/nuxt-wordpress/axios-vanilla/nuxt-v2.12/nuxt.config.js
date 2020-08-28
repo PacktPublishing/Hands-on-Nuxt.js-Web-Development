@@ -22,7 +22,11 @@ const ports = {
 
 const remoteUrl = protocol + '://' + host + ':' + ports.remote
 
-module.exports = {
+export default {
+  /*
+  ** Nuxt rendering mode
+  ** See https://nuxtjs.org/api/configuration-mode
+  */
   mode: 'universal',
 
   /*

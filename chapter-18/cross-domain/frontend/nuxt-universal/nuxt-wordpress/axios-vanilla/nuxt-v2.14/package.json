@@ -19,7 +19,7 @@
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.1",
     "mkdirp": "^1.0.4",
-    "nuxt": "^2.14.0",
+    "nuxt": "^2.14.3",
     "swiper": "^6.0.2",
     "what-input": "^5.2.10"
   },

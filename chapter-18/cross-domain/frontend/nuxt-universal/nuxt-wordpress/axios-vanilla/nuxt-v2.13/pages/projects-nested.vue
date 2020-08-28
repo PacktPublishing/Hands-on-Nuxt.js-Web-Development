@@ -15,7 +15,7 @@
     </div>
     <!-- row -->
 
-    <nuxt-child/>
+    <nuxt-child :key="$route.params.number"/>
 
   </div>
 

@@ -116,16 +116,16 @@ add_action('rest_api_init', function () use ($namespace) {
     register_rest_route($namespace, $route, $args);
 });
 
-// Only need this for Nuxt below v2.13
+// Only need this for Nuxt below v2.13, or when Nuxt crawler fails.
 // Create the endpoint for fetching all projects.
-// add_action('rest_api_init', function () use ($namespace) {
-//     $route = 'projects';
-//     $args = [
-//         'methods' => 'GET',
-//         'callback' => 'fetch_all_projects',
-//     ];
-//     register_rest_route($namespace, $route, $args);
-// });
+add_action('rest_api_init', function () use ($namespace) {
+    $route = 'projects';
+    $args = [
+        'methods' => 'GET',
+        'callback' => 'fetch_all_projects',
+    ];
+    register_rest_route($namespace, $route, $args);
+});
 
 // Create function to fetch site menu.
 function fetch_menu ($data) {
@@ -255,47 +255,47 @@ function fetch_projects ($data) {
     ];
 }
 
-// Only need this for Nuxt below v2.13
+// Only need this for Nuxt below v2.13, or when Nuxt crawler fails.
 // Create function to fetch all projects.
-// function fetch_all_projects ($data) {
-//     $post_type = 'project';
-//     $posts_per_page = -1; // get all posts.
+function fetch_all_projects ($data) {
+    $post_type = 'project';
+    $posts_per_page = -1; // get all posts.
 
-//     // Set the arguments for the query.
-//     $args = [
-//         'post_type' => $post_type,
-//         'post_status' => ['publish'],
-//         'posts_per_page' => $posts_per_page,
-//         'orderby' => 'date'
-//     ];
+    // Set the arguments for the query.
+    $args = [
+        'post_type' => $post_type,
+        'post_status' => ['publish'],
+        'posts_per_page' => $posts_per_page,
+        'orderby' => 'date'
+    ];
 
-//     // https://developer.wordpress.org/reference/functions/get_posts/
-//     $posts = get_posts($args);
+    // https://developer.wordpress.org/reference/functions/get_posts/
+    $posts = get_posts($args);
 
-//     // Return [] if no post.
-//     if (empty($posts)) {
-//         return [];
-//     }
+    // Return [] if no post.
+    if (empty($posts)) {
+        return [];
+    }
 
-//     // Loop each post and push other sub data.
-//     foreach ($posts as &$post) {
-//         // https://developer.wordpress.org/reference/functions/get_the_post_thumbnail_url/
-//         $post->featured_image = get_the_post_thumbnail_url($post->ID);
+    // Loop each post and push other sub data.
+    foreach ($posts as &$post) {
+        // https://developer.wordpress.org/reference/functions/get_the_post_thumbnail_url/
+        $post->featured_image = get_the_post_thumbnail_url($post->ID);
 
-//         // Use this method for local categories.
-//         // https://developer.wordpress.org/reference/functions/get_the_terms/
-//         $post->categories = get_the_terms($post->ID, 'project-category');
+        // Use this method for local categories.
+        // https://developer.wordpress.org/reference/functions/get_the_terms/
+        $post->categories = get_the_terms($post->ID, 'project-category');
 
-//         // Use this method for global categories.
-//         // https://developer.wordpress.org/reference/functions/get_the_category/
-//         // $post->categories = get_the_category($post->ID);
+        // Use this method for global categories.
+        // https://developer.wordpress.org/reference/functions/get_the_category/
+        // $post->categories = get_the_category($post->ID);
 
-//         // Add the ACF images.
-//         // https://www.advancedcustomfields.com/resources/get_field/
-//         // $post->images = get_field('image_items', $post->ID);
-//     }
-//     return $posts;
-// }
+        // Add the ACF images.
+        // https://www.advancedcustomfields.com/resources/get_field/
+        // $post->images = get_field('image_items', $post->ID);
+    }
+    return $posts;
+}
 
 /**
  * Empty all properties in an object.
