@@ -14,7 +14,7 @@ This book covers the following exciting features:
 * Extend VueJS apps using Nuxt's pages, components, routing, middleware, plugins, and modules
 * Use Nuxt to talk to APIs or data platforms written in any server-side language
 * Create a basic real-time web app using Node.js, Koa.js, and RethinkDB
-* Develop universal and static-generated web apps with NuxtJS, headless CMS, and GraphGL
+* Develop universal and static-generated web apps with NuxtJS, headless CMS, and GraphQL
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1789952697) today!
 
