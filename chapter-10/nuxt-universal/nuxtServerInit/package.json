@@ -12,7 +12,7 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "backpack-core": "^0.8.4",
     "consola": "^2.9.0",
     "cross-env": "^5.2.1",
