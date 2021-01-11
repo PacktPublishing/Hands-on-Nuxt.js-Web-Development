@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="user in users" v-bind:key="user.id">
-      <nuxt-link :to="`users/${user.id}`">
+      <nuxt-link :to="`/users/${user.id}`">
         {{ user.name }}
       </nuxt-link>
     </li>
